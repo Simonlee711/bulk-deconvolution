@@ -4,6 +4,10 @@ A module containing some helper functions to help with QC
 
 __author__ = 'Simon Lee (slee@celsiustx.com)'
 
+import numpy as np
+import project_configs as project_configs
+import pandas as pd
+
 def gene_intersection(df1, df2):
     '''
     Takes two dataframes (usually bulk samples and gene signature set), 
