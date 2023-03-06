@@ -32,14 +32,14 @@ class Plot():
         corr_plot(predicted_values, true_values) -> axs 
         print_cell(predicted_values, true_values) -> ax
         print_fitted_line(predicted_values, true_values, ...) -> ax
-        print_cell_whole(predicted_values, true_values, ...)
-        bland_altman(predicted_values, true_values, ...)
-        bland_altman2(predicted_values, true_values, ...)
-        get_cmap(n, name='hsv')
-        plot_sample(predicted_values, true_values, ...)
-        print_sample(predicted_values, true_values, ...)
-        balnd_altman_v2(predicted_values, true_values, ...)
-        bland_altmanv2_2(predicted_values, true_values, ...)
+        print_cell_whole(predicted_values, true_values, ...) -> ax
+        bland_altman(predicted_values, true_values, ...) -> ax
+        bland_altman2(predicted_values, true_values, ...) -> ax
+        get_cmap(n, name='hsv') -> ax.pallete
+        plot_sample(predicted_values, true_values, ...) -> ax
+        print_sample(predicted_values, true_values, ...) -> ax
+        balnd_altman_v2(predicted_values, true_values, ...) -> ax
+        bland_altmanv2_2(predicted_values, true_values, ...) -> ax
         qq(predicted_values, true_values) - NOT IMPLEMENTED YET
     '''
 
