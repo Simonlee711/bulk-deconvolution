@@ -26,8 +26,8 @@ class Mixer:
                  max_hyperexpr_level=1000,
                  num_points: int = 1000,
                  rebalance_param: float = 0.3,
-                 gene_length: str = 'configs/gene_length_values.tsv',
-                 genes_in_expression_path='configs/genes_in_expression.txt',
+                 gene_length = './Kassandra/configs/gene_length_values.tsv',
+                 genes_in_expression_path='./Kassandra/configs/genes_in_expression.txt',
                  num_av: int = 5,
                  all_genes: bool = False):
         """
@@ -52,7 +52,7 @@ class Mixer:
         self.rebalance_param = rebalance_param
         self.num_av = num_av
         self.proportions = get_proportions_series(cell_types)
-        self.gene_length = pd.read_csv(gene_length, sep='\t', index_col=0)
+        self.gene_length = pd.read_csv('./Kassandra/configs/gene_length_values.tsv', sep='\t', index_col=0)
         self.cells_annot = cells_annot
         self.tumor_annot = tumor_annot
 

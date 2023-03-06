@@ -11,12 +11,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import random
-from stats import statsTest
 import project_configs as project_configs
 from scipy.stats import pearsonr
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error as mse
 from sklearn.metrics import r2_score
+from stats import statsTest
 
 from matplotlib.axes._axes import _log as matplotlib_axes_logger
 matplotlib_axes_logger.setLevel('ERROR')

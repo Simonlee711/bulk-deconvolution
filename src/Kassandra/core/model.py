@@ -37,9 +37,9 @@ class DeconvolutionModel:
     Base class for model training and prediction.
     """ 
     def __init__(self, cell_types: CellTypes,
-                 boosting_params_first_step = 'configs/boosting_params/lgb_parameters_first_step.tsv',
-                 boosting_params_second_step = 'configs/boosting_params/lgb_parameters_second_step.tsv',
-                 genes_in_expression_path='configs/genes_in_expression.txt',
+                 boosting_params_first_step = './Kassandra/configs/boosting_params/lgb_parameters_first_step.tsv',
+                 boosting_params_second_step = './Kassandra/configs/boosting_params/lgb_parameters_second_step.tsv',
+                 genes_in_expression_path='./Kassandra/configs/genes_in_expression.txt',
                  l1_models: Dict = None,    
                  l2_models: Dict = None,
                  random_seed=0):
