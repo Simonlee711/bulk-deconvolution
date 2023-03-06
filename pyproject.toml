@@ -1,0 +1,18 @@
+[project]
+name = "cell-deconvolution"
+version = "0.0.1"
+authors = [
+  { name="Simon Lee", email="slee@celsiustx.com" },
+]
+description = "A small package that takes multiple deconvolution methods from the open source community and provides a way to benchmark them."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Simonleectx/cell-deconvolution"
+"Bug Tracker" = "https://github.com/Simonleectx/cell-deconvolution/issues"
