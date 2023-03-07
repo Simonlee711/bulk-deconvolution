@@ -111,7 +111,7 @@ class Plot():
         plt.ylabel("Cell types")
         #plt.savefig('', bbox_inches='tight')
 
-    def corr_plot(self, predicted_values, true_values, figsize=(24, 24), pallete=None):
+    def plot_cell(self, predicted_values, true_values, figsize=(24, 24), pallete=None):
         '''
         Author: Kassandra
         
@@ -263,7 +263,7 @@ class Plot():
 
         return ax
     
-    def print_cell_whole(self, predicted_values, true_values, ax=None, pallete=None, single_color='#999999',
+    def plot_whole(self, predicted_values, true_values, ax=None, pallete=None, single_color='#999999',
                            colors_by='index', predicted_name='Predicted percentage of cells, %',
                            true_name='Real percentage of cells, %', 
                            title=None, stat=True,
