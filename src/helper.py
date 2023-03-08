@@ -7,6 +7,9 @@ __author__ = 'Simon Lee (slee@celsiustx.com)'
 import numpy as np
 import project_configs as project_configs
 import pandas as pd
+import rpy2.robjects as robjects
+from rpy2.robjects import pandas2ri
+pandas2ri.activate()
 
 def gene_intersection(df1, df2):
     '''
@@ -44,4 +47,19 @@ def flatten(predicted_values, true_values):
     print(ind_names)
     col_names = predicted_values.columns.intersection(true_values.columns)
     print(col_names)
+
+def rds_to_df(file_path):
+    '''
+    pass in a .rds R data file with relative path and get a pandas df in return
+
+    Parameters:
+        file_path: the file with relative path to .rds data file (e.g. preds matrix)
+    
+    Returns:
+        df: a pandas dataframe object of the rds file
+    '''
+    readRDS = robjects.r['readRDS']
+    file = readRDS(file_path)
+    df = pandas2ri.ri2py(file)
+    return df
 
