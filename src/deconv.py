@@ -132,6 +132,12 @@ class Deconvolution():
                 maxiter=1000,
                 gene_dict=gene_dict)
 
+        cellanneal_1 = cellanneal_1 * 100
+        cellanneal_1 = cellanneal_1.T.copy()
+        cellanneal_1 = cellanneal_1.T.copy()
+        cellanneal_1.loc['T_cells'] = cellanneal_1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs']].sum()
+        cellanneal_1.loc['Lymphocytes'] = cellanneal_1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+
         # GSE1479433 bulk RNA-seq
         cellanneal_2 = cellanneal.deconvolve(
                 signature,
@@ -139,11 +145,28 @@ class Deconvolution():
                 maxiter=1000,
                 gene_dict=gene_dict2)
 
+        cellanneal_2 = cellanneal_2 * 100
+        cellanneal_2 = cellanneal_2.T.copy()
+        cellanneal_2.loc['T_cells'] = cellanneal_2.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs']].sum()
+        cellanneal_2.loc['Lymphocytes'] = cellanneal_2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+
         #### Kassandra #####
         # GSE107572 bulk RNA-seq
-        kassandra_1 = Kassandra.predict(gse1)
+        kassandra_all1 = Kassandra.predict(gse1)
+        kassandra_all1.loc['Lymphocytes'] = kassandra_all1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+        kassandra_all1 = kassandra_all1 * 100
+
+        # drop parent nodes so we can plot child nodes stack plots
+        parent_nodes = ['Non_plasma_B_cells', 'Monocytes', 'Granulocytes', 'B_cells', 'T_cells', 'NK_cells', 'Myeloid_cells', 'Lymphoid_cells', 'Lymphocytes', 'CD8_T_cells', 'Cytotoxic_NK_cells', 'CD4_T_cells', 'Memory_T_helpers', 'Memory_CD8_T_cells']
+        kassandra_child1 = kassandra_all1.drop(parent_nodes)
+
         # GSE1479433 bulk RNA-seq
-        kassandra_2 = Kassandra.predict(gse2)
+        kassandra_all2 = Kassandra.predict(gse2)
+        kassandra_all2.loc['Lymphocytes'] = kassandra_all2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+        kassandra_all2 = kassandra_all2 * 100
+
+        # drop parent nodes so we can plot child nodes stack plots
+        kassandra_child2 = kassandra_all2.drop(parent_nodes)
 
         #### SVR ####
         # GSE107572 bulk RNA-seq
@@ -167,6 +190,7 @@ class Deconvolution():
             SVRcoef1[:,i] = SVRcoef1[:,i]/np.sum(SVRcoef1[:,i])
         svr_1 = pd.DataFrame(SVRcoef1,index=im_name, columns=ind)
         svr_1 = svr_1.reindex(sorted(svr_1.columns), axis=1)
+        svr_1 = svr_1 * 100
 
 
         # GSE1479433 bulk RNA-seq
@@ -186,9 +210,10 @@ class Deconvolution():
             SVRcoef2[:,i] = SVRcoef2[:,i]/np.sum(SVRcoef2[:,i])
         svr_2 = pd.DataFrame(SVRcoef2,index=im_name, columns=ind)
         svr_2 = svr_2.reindex(sorted(svr_2.columns), axis=1)
+        svr_2 = svr_2 * 100
 
         # puts all dataframe objects into a list
-        predictions =  [cellanneal_1, cellanneal_2, kassandra_1, kassandra_2, svr_1, svr_2]
+        predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2,kassandra_child1, kassandra_child2, svr_1, svr_2]
         return predictions
 
 
