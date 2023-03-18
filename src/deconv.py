@@ -45,14 +45,23 @@ class Deconvolution():
                       2. training dataset
         Returns:
             The trained models are returned
-                      1. Cellanneal model
+                      1. Cellanneal model (1 & 2)
                       2. Kassandra model
         '''
 
+
+
         # cellanneal training
-        cellanneal_model = cellanneal.make_gene_dictionary(
+        cellanneal_model1 = cellanneal.make_gene_dictionary(
                     signature,
-                    training_data,
+                    training_data[0],
+                    disp_min=0.5,
+                    bulk_min=1e-5,
+                    bulk_max=0.01)
+        
+        cellanneal_model2 = cellanneal.make_gene_dictionary(
+                    signature,
+                    training_data[1],
                     disp_min=0.5,
                     bulk_min=1e-5,
                     bulk_max=0.01)
@@ -73,7 +82,7 @@ class Deconvolution():
                                 boosting_params_second_step='./Kassandra/configs/boosting_params/median_model_second.tsv')
         kassandra_model.fit(mixer)
 
-        models = [cellanneal_model, kassandra_model]
+        models = [cellanneal_model1, cellanneal_model2, kassandra_model]
         
         return models
 
@@ -113,6 +122,7 @@ class Deconvolution():
         gse1 = test_data[1]
         gse2 = test_data[2]
         gene_dict = test_data[3]
+        gene_dict2 = test_data[4]
 
         #### Cell Anneal #####
         # GSE107572 bulk RNA-seq
@@ -127,7 +137,7 @@ class Deconvolution():
                 signature,
                 gse2,
                 maxiter=1000,
-                gene_dict=gene_dict)
+                gene_dict=gene_dict2)
 
         #### Kassandra #####
         # GSE107572 bulk RNA-seq
