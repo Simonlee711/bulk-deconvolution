@@ -216,5 +216,59 @@ class Deconvolution():
         predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2,kassandra_child1, kassandra_child2, svr_1, svr_2]
         return predictions
 
+    def benchmark(self, df_list, true, cell=True, sample=False, statistic='pearson'):
+        '''
+        A function that takes in all the predictions dataframes and benchmarks with true data measurements
+        
+        Parameters:
+            df_list: a list object containing dataframes. Preferred order
+                1. Cellanneal
+                2. Kassandra
+                3. SVR
+            true: the true measurement to calculate the residuals at each cell level
+            cell: a boolean parameter to benchmark at the cell level (default: True)
+            sample: a boolean parameter to benchmark at sample level (default: False)
+            statistic: choose one statistic to benchmark on (pearson, r2, diff, rmse)
+
+        Returns:
+            None
+        '''
+        # first checks for whether only one of the flags are on
+        assert cell == True and sample == True, "Can't do that silly goose"
+
+        # Prepares the cell or sample specific dataframes
+        preds_list = []
+        for pred in df_list:
+            if sample:
+                pred=pred.T
+            preds_list.append(pred)
+        
+        # now conducts the benchmarking 
+        for pred in preds_list:
+
+            # gets rid of method specific columns
+            corr_list = []
+            if 'rho_Spearman' in pred.columns:
+                corr_list.append('rho_Spearman')
+            if 'rho_Pearson' in pred.columns:
+                corr_list.append('rho_Pearson')
+            if len(corr_list) > 0:
+                pred = pred.drop(corr_list, axis=1)
+            else:
+                pred = pred
+
+            # benchmarks based on statistic
+
+            if statistic == 'pearson':
+                pass
+            elif statistic == 'r2':
+                pass
+            elif statistic == 'diff':
+                pass
+            elif statistic == 'rmse':
+                pass
+            else:
+                return "invalid prompt"
+
 
     
