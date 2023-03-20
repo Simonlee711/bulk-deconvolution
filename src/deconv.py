@@ -27,6 +27,7 @@ from sklearn.metrics import mean_squared_error as mse
 from sklearn.metrics import r2_score
 
 from tqdm import tqdm
+from stats import statsTest
 
 class Deconvolution():
     '''
@@ -216,7 +217,7 @@ class Deconvolution():
         predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2,kassandra_child1, kassandra_child2, svr_1, svr_2]
         return predictions
 
-    def benchmark(self, df_list, true, cell=True, sample=False, statistic='pearson'):
+    def benchmark(self, df_list, true, name_list = ['cellanneal', 'Kassandra', 'SVR'], cell=True, sample=False, statistic='pearson'):
         '''
         A function that takes in all the predictions dataframes and benchmarks with true data measurements
         
@@ -235,6 +236,10 @@ class Deconvolution():
         '''
         # first checks for whether only one of the flags are on
         assert cell == True and sample == True, "Can't do that silly goose"
+        
+        # define some dummy variables for later
+        df_final = pd.DataFrame()
+        length = 999
 
         # Prepares the cell or sample specific dataframes
         preds_list = []
@@ -244,31 +249,46 @@ class Deconvolution():
             preds_list.append(pred)
         
         # now conducts the benchmarking 
-        for pred in preds_list:
+        for i, pred in enumerate(preds_list):
 
-            # gets rid of method specific columns
-            corr_list = []
-            if 'rho_Spearman' in pred.columns:
-                corr_list.append('rho_Spearman')
-            if 'rho_Pearson' in pred.columns:
-                corr_list.append('rho_Pearson')
-            if len(corr_list) > 0:
-                pred = pred.drop(corr_list, axis=1)
-            else:
-                pred = pred
+            ind_names = pred.dropna().index.intersection(true.dropna().index)
+            col_names = pred.dropna().columns.intersection(true.dropna().columns)
+            predicted_values = pred.loc[ind_names, col_names]
+            true_values = true.loc[ind_names, col_names]
+            predicted_values = predicted_values.T
+            true_values = true_values.T
+            cells = true_values.columns
+            stat = statsTest()
+
+            temp2 = predicted_values.shape[1]
+            if temp2 < length:
+                length = temp2
+
 
             # benchmarks based on statistic
-
-            if statistic == 'pearson':
-                pass
-            elif statistic == 'r2':
-                pass
-            elif statistic == 'diff':
-                pass
-            elif statistic == 'rmse':
-                pass
-            else:
-                return "invalid prompt"
+            benchmark_list = []
+            for x, cell in enumerate(cells):
+                if statistic == 'pearson':
+                    val = stat.correlation(predicted_values[cell], true_values[cell])
+                elif statistic == 'r2':
+                    val = stat.R_squared(predicted_values[cell], true_values[cell])
+                elif statistic == 'diff':
+                    val = predicted_values[cell] - true_values[cell]
+                elif statistic == 'rmse':
+                    val = stat.rmse(predicted_values[cell], true_values[cell])
+                else:
+                    return "invalid prompt"
+                benchmark_list.append(val)
+            
+            # create final dataframes
+            benchmark_list = benchmark_list[0:length]
+            df_final[name_list[i]] = benchmark_list
+            if i == 0:
+                index_name = predicted_values.columns
+                df_final.index = index_name
+            
+            # how to score final to find minimums for rows
+            
 
 
     
