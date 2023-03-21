@@ -1,7 +1,7 @@
 '''
 Deconvolution Model Wrapper
 '''
-
+#%%
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -235,7 +235,7 @@ class Deconvolution():
             None
         '''
         # first checks for whether only one of the flags are on
-        assert cell == True and sample == True, "Can't do that silly goose"
+        #assert cell == True and sample == True, "Can't do that silly goose"
         
         # define some dummy variables for later
         df_final = pd.DataFrame()
@@ -253,8 +253,8 @@ class Deconvolution():
 
             ind_names = pred.dropna().index.intersection(true.dropna().index)
             col_names = pred.dropna().columns.intersection(true.dropna().columns)
-            predicted_values = pred.loc[ind_names, col_names]
-            true_values = true.loc[ind_names, col_names]
+            predicted_values = pred.loc[ind_names, col_names].astype(float)
+            true_values = true.loc[ind_names, col_names].astype(float)
             predicted_values = predicted_values.T
             true_values = true_values.T
             cells = true_values.columns
@@ -278,7 +278,10 @@ class Deconvolution():
                     val = stat.rmse(predicted_values[cell], true_values[cell])
                 else:
                     return "invalid prompt"
-                benchmark_list.append(val)
+                if statistic == 'diff':
+                    benchmark_list.append(val[1])
+                else:
+                    benchmark_list.append(val)
             
             # create final dataframes
             benchmark_list = benchmark_list[0:length]
@@ -287,8 +290,62 @@ class Deconvolution():
                 index_name = predicted_values.columns
                 df_final.index = index_name
             
-            # how to score final to find minimums for rows
-            
+
+        # how to score final to find minimums for rows
+        if statistic == 'pearson' or statistic == 'r2':
+            df_final['winners value'] = df_final[name_list].abs().max(axis=1)
+            df_final['winners'] = df_final[name_list].abs().idxmax(axis=1)
+        if statistic == 'diff' or statistic == 'rmse':
+            df_final['winners value'] = df_final[name_list].abs().min(axis=1)
+            df_final['winners'] = df_final[name_list].abs().idxmin(axis=1)
+        # Value Counts of the dataframe
+        if cell:
+            print("### Here are the results of the methods based on cell specific & benchmarked on {} ###".format(statistic))
+        if sample:
+            print("### Here are the results of the methods based on cell specific & benchmarked on {} ###".format(statistic))
+        print(df_final['winners'].value_counts())
+        display(df_final)
+
+#%%
+x = Deconvolution()
+pred1 = pd.read_csv('pred.csv', index_col=0)
+pred2 = pd.read_csv('pred2.csv',index_col=0)
+pred3 = pd.read_csv('pred3.csv',index_col=0)
 
 
-    
+# oops
+ca1 = pred1.T.copy()
+ca1.loc['B_cells'] = ca1.loc[['B', 'B-naive']].sum()
+ca1.loc['CD4_T_cells'] = ca1.loc[['CD4', 'CD4-naive']].sum()
+ca1.loc['CD8_T_cells'] = ca1.loc[['CD8']].sum()
+ca1.loc['NK_cells'] = ca1.loc[['NK']].sum()
+ca1.loc['Tregs'] = ca1.loc[['Treg']].sum()
+ca1.loc['T_cells'] = ca1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
+ca1.loc['Lymphocytes'] = ca1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+
+# 2
+ka1 = pred2.T.copy()
+ka1.loc['B_cells'] = ka1.loc[['B', 'B-naive']].sum()
+ka1.loc['CD4_T_cells'] = ka1.loc[['CD4', 'CD4-naive']].sum()
+ka1.loc['CD8_T_cells'] = ka1.loc[['CD8']].sum()
+ka1.loc['NK_cells'] = ka1.loc[['NK']].sum()
+ka1.loc['Tregs'] = ka1.loc[['Treg']].sum()
+ka1.loc['T_cells'] = ka1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
+ka1.loc['Lymphocytes'] = ka1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+#3
+svr1 = pred3.T.copy()
+svr1.loc['B_cells'] = svr1.loc[['B', 'B-naive']].sum()
+svr1.loc['CD4_T_cells'] = svr1.loc[['CD4', 'CD4-naive']].sum()
+svr1.loc['CD8_T_cells'] = svr1.loc[['CD8']].sum()
+svr1.loc['NK_cells'] = svr1.loc[['NK']].sum()
+svr1.loc['Tregs'] = svr1.loc[['Treg']].sum()
+svr1.loc['T_cells'] = svr1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
+svr1.loc['Lymphocytes'] = svr1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+
+
+preds = [ca1, ka1, svr1]
+true = pd.read_csv('../data/GSE107572_cytof.tsv.tar.gz', sep='\t', index_col=0)
+
+#%%
+x.benchmark(preds, true, statistic='rmse', cell=True, sample=False)
+# %%
