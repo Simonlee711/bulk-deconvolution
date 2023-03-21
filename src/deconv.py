@@ -293,16 +293,14 @@ class Deconvolution():
 
         # how to score final to find minimums for rows
         if statistic == 'pearson' or statistic == 'r2':
-            df_final['winners value'] = df_final[name_list].abs().max(axis=1)
+            df_final['winners value'] = df_final[name_list].max(axis=1)
             df_final['winners'] = df_final[name_list].abs().idxmax(axis=1)
         if statistic == 'diff' or statistic == 'rmse':
             df_final['winners value'] = df_final[name_list].abs().min(axis=1)
             df_final['winners'] = df_final[name_list].abs().idxmin(axis=1)
         # Value Counts of the dataframe
         if cell:
-            print("### Here are the results of the methods based on cell specific & benchmarked on {} ###".format(statistic))
-        if sample:
-            print("### Here are the results of the methods based on cell specific & benchmarked on {} ###".format(statistic))
+            print("### Here are the results of the methods based on cell specific & benchmarked on {} ###\n\n".format(statistic))
         print(df_final['winners'].value_counts())
         display(df_final)
 
@@ -347,5 +345,5 @@ preds = [ca1, ka1, svr1]
 true = pd.read_csv('../data/GSE107572_cytof.tsv.tar.gz', sep='\t', index_col=0)
 
 #%%
-x.benchmark(preds, true, statistic='rmse', cell=True, sample=False)
+x.benchmark(preds, true, statistic='r2')
 # %%
