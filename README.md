@@ -1,6 +1,6 @@
 # Cell Deconvolution Benchmarking
 
-{% include figure image_path="cell-deconvolution/figures/rmse_method.png" alt="this is a placeholder image" caption="" %}
+![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/rmse_method.png)
 
 This package's primary intentions are to provide the user with the following:
 
