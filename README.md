@@ -40,7 +40,7 @@ To build an environment run the following command:
 
 Cell deconvolution has long been a challenge due to the variability of results seen across current existing methods. Every method is proven to be shown as the "state of the art" and yet we still do not have a method that is seen as the standard for such research problems. This is due to the variability seen across performance at a cell type level. as seen below from the paper [Community assessment of methods to deconvolve cellular composition from bulk gene expression](https://www.biorxiv.org/content/10.1101/2022.06.03.494221v2):
 
-![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/methods-LOD.png)
+![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/benchmark.png)
 
 
 
