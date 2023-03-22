@@ -26,7 +26,9 @@ Cellular deconvolution (also referred to as cell type composition or cell propor
 
 ### Installing Environments & Requirements
 
-```environment.yml ``` - file is included in the repository. Takes dependencies from ```requirements.txt```
+```environment.yml ``` - file is included in the repository. Takes dependencies from Simon's conda environment
+
+```requirements.txt``` - file includes dependencies as well and can be easily installed using `pip freeze > requirements.txt`
 
 To build an environment run the following command:
 
@@ -36,10 +38,9 @@ To build an environment run the following command:
 
 ### What the Package does for You
 
-Cell deconvolution has long been a challenge due to the variability of results seen across current existing methods. Every method is proven to be shown as the "state of the art" and yet we still do not have a method that is seen as the standard for such research problems. This is due to the variability seen across performance at a cell type level. as seen below:
+Cell deconvolution has long been a challenge due to the variability of results seen across current existing methods. Every method is proven to be shown as the "state of the art" and yet we still do not have a method that is seen as the standard for such research problems. This is due to the variability seen across performance at a cell type level. as seen below from the paper [Community assessment of methods to deconvolve cellular composition from bulk gene expression](https://www.biorxiv.org/content/10.1101/2022.06.03.494221v2):
 
-{% include figure image_path="figures/methods-LOD.png" alt="this is a placeholder image" caption="Community assessment of methods to deconvolve cellular composition from bulk gene expression Brian S. White, Aurélien de Reyniès, Aaron M. Newman, Joshua J. Waterfall, Andrew Lamb, Florent Petitprez, Alberto Valdeolivas, Yating Lin, Haojun Li, Xu Xiao, Shun Wang, Frank Zheng, Wenxian Yang, Rongshan Yu, Martin E Guerrero-Gimenez, Carlos A Catania, Benjamin J Lang, Sergii Domanskyi, Thomas J Bertus, Carlo Piermarocchi, Gianni Monaco, Francesca P Caruso, Michele Ceccarelli, Thomas Yu, Xindi Guo, John Coller, Holden Maecker, Caroline Duault, Vida Shokoohi, Shailja Patel, Joanna E Liliental, Stockard Simon, Tumor Deconvolution DREAM Challenge consortium, Julio Saez-Rodriguez, Laura M. Heiser, Justin Guinney, Andrew J. Gentles
-bioRxiv 2022.06.03.494221; doi: https://doi.org/10.1101/2022.06.03.494221" %}
+![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/methods-LOD.png)
 
 
 
