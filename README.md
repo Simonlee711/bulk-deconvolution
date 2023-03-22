@@ -1,6 +1,6 @@
 # Cell Deconvolution Benchmarking
 
-![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/rmse_method.png | width=100)
+![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/rmse_method.png =250x250)
 
 This package's primary intentions are to provide the user with the following:
 
