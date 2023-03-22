@@ -14,6 +14,14 @@ Cellular deconvolution (also referred to as cell type composition or cell propor
 
 ### Package Organization
 
+```\data``` - this folder contains some starter benchmarking files. 
+
+```\figures```
+
+```\src```
+
+```\test```
+
 ### Installing Environments & Requirements
 
 ```environment.yml ``` - file is included in the repository. Takes dependencies from ```requirements.txt```

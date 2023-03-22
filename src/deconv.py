@@ -304,6 +304,3 @@ class Deconvolution():
         print(df_final['winners'].value_counts())
         display(df_final)
 
-#%%
-x.benchmark(preds, true, statistic='r2')
-# %%
