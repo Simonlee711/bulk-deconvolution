@@ -34,7 +34,7 @@ class Deconvolution():
     A class for the deconvolution models
     '''
 
-    def train(signature, training_data):
+    def train(self, signature, training_data):
         '''
         Training models from scratch:
                       1. Cellanneal
@@ -50,9 +50,10 @@ class Deconvolution():
                       2. Kassandra model
         '''
 
-
-
         # cellanneal training
+
+        print("Preparing Cell Anneal Model")
+
         cellanneal_model1 = cellanneal.make_gene_dictionary(
                     signature,
                     training_data[0],
@@ -67,6 +68,8 @@ class Deconvolution():
                     bulk_min=1e-5,
                     bulk_max=0.01)
         
+        print("Training Kassandra Model")
+
         # Kassandra training
         lab_expr = pd.read_csv('./Kassandra/trainingData/laboratory_data_expressions.tsv', sep='\t', index_col=0)
         lab_annot = pd.read_csv('./Kassandra/trainingData/laboratory_data_annotation.tsv', sep='\t', index_col=0)
@@ -89,7 +92,7 @@ class Deconvolution():
 
         
 
-    def deconvolution(models, test_data):
+    def deconvolution(self, models, test_data):
         '''
         Pass in models from training along with testing set to proceed with benchmarking
 
@@ -102,7 +105,6 @@ class Deconvolution():
                        1. Gene Expression Signature
                        2. GSE107572 bulk RNA-seq
                        3. GSE1479433 bulk RNA-seq
-                       4. Cellanneal Gene Dictionary Object
         
         Returns:
             returns a prediction or a list of prediction matrices needed for benchmarking
@@ -115,18 +117,20 @@ class Deconvolution():
         '''
 
         # model extraction
-        cellanneal = models[0]
-        Kassandra = models[1]
+        gene_dict = models[0]
+        gene_dict2 = models[1]
+        Kassandra = models[2]
 
         # data extraction
         signature = test_data[0]
         gse1 = test_data[1]
         gse2 = test_data[2]
-        gene_dict = test_data[3]
-        gene_dict2 = test_data[4]
 
         #### Cell Anneal #####
         # GSE107572 bulk RNA-seq
+
+        print("Performing cellanneal deconvolution \n")
+
         cellanneal_1 = cellanneal.deconvolve(
                 signature,
                 gse1,
@@ -135,8 +139,17 @@ class Deconvolution():
 
         cellanneal_1 = cellanneal_1 * 100
         cellanneal_1 = cellanneal_1.T.copy()
-        cellanneal_1 = cellanneal_1.T.copy()
-        cellanneal_1.loc['T_cells'] = cellanneal_1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs']].sum()
+
+        ###################################################################################
+        # !!! feel free to comment this out if working with a different tissue sample !!! #
+        ###################################################################################
+
+        cellanneal_1.loc['B_cells'] = cellanneal_1.loc[['B', 'B-naive']].sum()
+        cellanneal_1.loc['CD4_T_cells'] = cellanneal_1.loc[['CD4', 'CD4-naive']].sum()
+        cellanneal_1.loc['CD8_T_cells'] = cellanneal_1.loc[['CD8']].sum()
+        cellanneal_1.loc['NK_cells'] = cellanneal_1.loc[['NK']].sum()
+        cellanneal_1.loc['Tregs'] = cellanneal_1.loc[['Treg']].sum()
+        cellanneal_1.loc['T_cells'] = cellanneal_1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
         cellanneal_1.loc['Lymphocytes'] = cellanneal_1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
 
         # GSE1479433 bulk RNA-seq
@@ -145,16 +158,33 @@ class Deconvolution():
                 gse2,
                 maxiter=1000,
                 gene_dict=gene_dict2)
+        
+        ###################################################################################
+        # !!! feel free to comment this out if working with a different tissue sample !!! #
+        ###################################################################################
 
         cellanneal_2 = cellanneal_2 * 100
         cellanneal_2 = cellanneal_2.T.copy()
-        cellanneal_2.loc['T_cells'] = cellanneal_2.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs']].sum()
+        cellanneal_2.loc['B_cells'] = cellanneal_2.loc[['B', 'B-naive']].sum()
+        cellanneal_2.loc['CD4_T_cells'] = cellanneal_2.loc[['CD4', 'CD4-naive']].sum()
+        cellanneal_2.loc['CD8_T_cells'] = cellanneal_2.loc[['CD8']].sum()
+        cellanneal_2.loc['NK_cells'] = cellanneal_2.loc[['NK']].sum()
+        cellanneal_2.loc['Tregs'] = cellanneal_2.loc[['Treg']].sum()
+        cellanneal_2.loc['T_cells'] = cellanneal_2.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
         cellanneal_2.loc['Lymphocytes'] = cellanneal_2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
 
         #### Kassandra #####
         # GSE107572 bulk RNA-seq
+
+        print("performing Kassandra deconvolution")
+
         kassandra_all1 = Kassandra.predict(gse1)
+        ###################################################################################
+        # !!! feel free to comment this out if working with a different tissue sample !!! #
+        ###################################################################################
         kassandra_all1.loc['Lymphocytes'] = kassandra_all1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
+
+
         kassandra_all1 = kassandra_all1 * 100
 
         # drop parent nodes so we can plot child nodes stack plots
@@ -163,6 +193,11 @@ class Deconvolution():
 
         # GSE1479433 bulk RNA-seq
         kassandra_all2 = Kassandra.predict(gse2)
+
+        ###################################################################################
+        # !!! feel free to comment this out if working with a different tissue sample !!! #
+        ###################################################################################
+
         kassandra_all2.loc['Lymphocytes'] = kassandra_all2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
         kassandra_all2 = kassandra_all2 * 100
 
@@ -171,15 +206,33 @@ class Deconvolution():
 
         #### SVR ####
         # GSE107572 bulk RNA-seq
+
+        print("Performing SVR deconvolution \n ")
+
+        ###################################################################################
+        # pseudocode for SVR comes from https://rdrr.io/github/IOBR/IOBR/src/R/CIBERSORT.R 
+        ###################################################################################
+
         scaler = StandardScaler()
-  
+
+        # get the gene intersection and filter them out
+        set1 = set(gse1.index)
+        set2 = set(gse2.index)
+        set3 = set(signature.index)
+        intersection = (set1.intersection(set2)).intersection(set3)
+        inter = list(intersection)
+
+
+        signature = signature.filter(items=inter,axis=0)
+        gse1 = gse1.filter(items=inter,axis=0)
+        gse2 = gse2.filter(items=inter,axis=0)
+        
         # transform data
         train  = scaler.fit_transform(signature)
         test_data = scaler.fit_transform(gse1)
         ind = gse1.columns 
         Nus=[0.25, 0.5, 0.75]
 
-        # pseudocode for SVR comes from https://rdrr.io/github/IOBR/IOBR/src/R/CIBERSORT.R 
         SVRcoef1 = np.zeros((signature.shape[1], gse1.shape[1]))
         Selcoef1 = np.zeros((gse1.shape[0], gse1.shape[1]))
 
@@ -215,7 +268,20 @@ class Deconvolution():
         svr_2 = svr_2 * 100
 
         # puts all dataframe objects into a list
-        predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2,kassandra_child1, kassandra_child2, svr_1, svr_2]
+        predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2, kassandra_child1, kassandra_child2, svr_1, svr_2]
+        prediction_saved_names = ['cellanneal_GSE107572.csv' , 
+                                  'cellanneal_GSE1479433.csv', 
+                                  'kassandra_all_GSE107572.csv', 
+                                  'kassandra_all_GSE1479433.csv', 
+                                  'kassandra_child_GSE107572.csv', 
+                                  'kassandra_child_GSE1479433.csv', 
+                                  'svr_GSE107572.csv', 
+                                  'svr_GSE1479433.csv']
+        
+        # save prediction matrices
+        for i in range(len(predictions)):
+            predictions[i].to_csv(+prediction_saved_names[i])
+ 
         return predictions
 
     def benchmark(self, df_list, true, name_list = ['cellanneal', 'Kassandra', 'SVR'], cell=True, sample=False, statistic='pearson'):
