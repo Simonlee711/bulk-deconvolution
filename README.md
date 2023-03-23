@@ -38,19 +38,26 @@ To build an environment run the following command:
 
 ### What the Package does for You
 
-Cell deconvolution has long been a challenge due to the variability of results seen across current existing methods. Every method is proven to be shown as the "state of the art" and yet we still do not have a method that is seen as the standard for such research problems. This is due to the variability seen across performance at a cell type level. as seen below from the paper [Community assessment of methods to deconvolve cellular composition from bulk gene expression](https://www.biorxiv.org/content/10.1101/2022.06.03.494221v2):
+Cell deconvolution has long been a challenge due to the variability of results seen across current existing methods. Every method is proven to be shown as the "state of the art" and yet we still do not have a method that is seen as the standard for such research problems. This is due to the variability seen across performance at a cell type level as seen in the figure below from the paper [Community assessment of methods to deconvolve cellular composition from bulk gene expression](https://www.biorxiv.org/content/10.1101/2022.06.03.494221v2):
 
 ![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/benchmark.png)
 
-
+Another issue seen across methods is the lack of publicly available gene expression signatures so in this package we supply a gene expression signature builder that is typically required in training any cell deconvolution model. In order to do this you will need access to the Celsius Therapeutics Ctxbio repository specifically the `ctxbio/scdata.py` where we will use the built in differential expression methods as well as some built-in methods from scanpy to derive our gene signatures. We experimented with generating different type of signatures which should change the models capabilities to predict. Please note that different methods may require different type of signatures (e.g. Kassandra - hiearchal, proportion, starter gene information in .yaml file. See `src/Kassandra/config/custom.yaml` to see signature organization for the Kassandra model).  
 
 ### User requirements
+
+The user is asked to provide bulk samples with corresponding "ground truth" data (e.g. flow cytometry) to perform the benchmarking. The three methods supplied were chosen due to there drastically different properties of inferring the cell proportions (Kassandra - decision tree, Cellanneal - annealing, SVR - regression). However as mentioned in the package motivation, many methods claim that they are the state of the art so this package is really meant to help assess these discrepancies. If you do decide to try new methods, simply load the methods `train()` & `fit()` functions inside the file `src/deconv.py` under the `train()` and `deconvolution()` routines. Other methods in the package should not need to be changed but routines like `benchmark()` should have slight changes in parameter arguments. If there is any confusion, please try to follow the logic of the notebook which tries to show off the functionality of the whole package with notebook annotations along the way. If there are any more questions feel free to email the authors. 
 
 ### Gene Expression Signature Builder
 
 ### How to Run Package
 
+Remember. Easy to use. Run `src/master_deconvolution.ipynb` to look at the functionality of the package. 
+
+In terms of retraining models from scratch, please be aware of the basic deconvolution assumptions. The training bulk datasets and the gene expression signatures should come from the same tissue. And if you need a gene signature to be generated from our package, please take note that life will be easier if your single-cell reference dataset contains a `cell_type` or `cell_subtype` annotation. Currently none of the model binaries are saved but possibly in a future version, I will add a feature to save pickle files so our results are reproducible and you can forgo the lenghty duration of training. 
+
 ### Authors
 
+Simon Lee, Data Science Co-op, slee@celsiustx.com
 
 

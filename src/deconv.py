@@ -179,6 +179,7 @@ class Deconvolution():
         ind = gse1.columns 
         Nus=[0.25, 0.5, 0.75]
 
+        # pseudocode for SVR comes from https://rdrr.io/github/IOBR/IOBR/src/R/CIBERSORT.R 
         SVRcoef1 = np.zeros((signature.shape[1], gse1.shape[1]))
         Selcoef1 = np.zeros((gse1.shape[0], gse1.shape[1]))
 
