@@ -52,12 +52,14 @@ The user is asked to provide bulk samples with corresponding "ground truth" data
 
 ### How to Run Package
 
-Remember. Easy to use. Run `src/master_deconvolution.ipynb` to look at the functionality of the package. 
+Remember. Easy to use. Run `src/master_deconvolution.ipynb` to look at the functionality of the package. The benchmarking pipeline is visualized below:
+
+![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/pipeline.jpeg)
 
 In terms of retraining models from scratch, please be aware of the basic deconvolution assumptions. The training bulk datasets and the gene expression signatures should come from the same tissue. And if you need a gene signature to be generated from our package, please take note that life will be easier if your single-cell reference dataset contains a `cell_type` or `cell_subtype` annotation. Currently none of the model binaries are saved but possibly in a future version, I will add a feature to save pickle files so our results are reproducible and you can forgo the lenghty duration of training. 
 
 ### Authors
 
-Simon Lee, Data Science Co-op, slee@celsiustx.com
+Simon Lee - Data Science Co-op, slee@celsiustx.com
 
 
