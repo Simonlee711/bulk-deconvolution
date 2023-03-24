@@ -126,6 +126,17 @@ class Deconvolution():
         gse1 = test_data[1]
         gse2 = test_data[2]
 
+        # for saving purposes 
+        prediction_saved_names = ['cellanneal_GSE107572.csv' , 
+                            'cellanneal_GSE1479433.csv', 
+                            'kassandra_all_GSE107572.csv',
+                            'kassandra_child_GSE107572.csv', 
+                            'kassandra_all_GSE1479433.csv',  
+                            'kassandra_child_GSE1479433.csv', 
+                            'svr_GSE107572.csv', 
+                            'svr_GSE1479433.csv']
+        i = 0
+
         #### Cell Anneal #####
         # GSE107572 bulk RNA-seq
 
@@ -152,6 +163,9 @@ class Deconvolution():
         cellanneal_1.loc['T_cells'] = cellanneal_1.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
         cellanneal_1.loc['Lymphocytes'] = cellanneal_1.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
 
+        cellanneal_1.to_csv(prediction_saved_names[i])
+        i = i+1
+
         # GSE1479433 bulk RNA-seq
         cellanneal_2 = cellanneal.deconvolve(
                 signature,
@@ -173,6 +187,9 @@ class Deconvolution():
         cellanneal_2.loc['T_cells'] = cellanneal_2.loc[['CD8_T_cells', 'CD4_T_cells', 'Tregs', 'T_undef']].sum()
         cellanneal_2.loc['Lymphocytes'] = cellanneal_2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
 
+        cellanneal_2.to_csv(prediction_saved_names[i])
+        i = i+1
+
         #### Kassandra #####
         # GSE107572 bulk RNA-seq
 
@@ -186,10 +203,16 @@ class Deconvolution():
 
 
         kassandra_all1 = kassandra_all1 * 100
+        ###
+        kassandra_all1.to_csv(prediction_saved_names[i])
+        i = i+1
 
         # drop parent nodes so we can plot child nodes stack plots
         parent_nodes = ['Non_plasma_B_cells', 'Monocytes', 'Granulocytes', 'B_cells', 'T_cells', 'NK_cells', 'Myeloid_cells', 'Lymphoid_cells', 'Lymphocytes', 'CD8_T_cells', 'Cytotoxic_NK_cells', 'CD4_T_cells', 'Memory_T_helpers', 'Memory_CD8_T_cells']
         kassandra_child1 = kassandra_all1.drop(parent_nodes)
+        ###
+        kassandra_child1.to_csv(prediction_saved_names[i])
+        i = i+1
 
         # GSE1479433 bulk RNA-seq
         kassandra_all2 = Kassandra.predict(gse2)
@@ -200,9 +223,15 @@ class Deconvolution():
 
         kassandra_all2.loc['Lymphocytes'] = kassandra_all2.loc[['B_cells', 'T_cells', 'NK_cells']].sum()
         kassandra_all2 = kassandra_all2 * 100
+        ###
+        kassandra_all2.to_csv(prediction_saved_names[i])
+        i = i+1
 
         # drop parent nodes so we can plot child nodes stack plots
         kassandra_child2 = kassandra_all2.drop(parent_nodes)
+        ###
+        kassandra_child2.to_csv(prediction_saved_names[i])
+        i = i+1
 
         #### SVR ####
         # GSE107572 bulk RNA-seq
@@ -239,6 +268,7 @@ class Deconvolution():
         for i in tqdm(range(gse1.shape[1])):
             sols = [NuSVR(kernel='linear', nu=nu).fit(train,test_data[:,i]) for nu in Nus]
             im_name = signature.columns
+
             RMSE = [mse(sol.predict(train), test_data[:,i]) for sol in sols]
             Selcoef1[sols[np.argmin(RMSE)].support_, i] = 1
             SVRcoef1[:,i] = np.maximum(sols[np.argmin(RMSE)].coef_,0)
@@ -247,6 +277,8 @@ class Deconvolution():
         svr_1 = svr_1.reindex(sorted(svr_1.columns), axis=1)
         svr_1 = svr_1 * 100
 
+        svr_1.to_csv(prediction_saved_names[6])
+        i = i+1
 
         # GSE1479433 bulk RNA-seq
         test_data = scaler.fit_transform(gse2)
@@ -267,20 +299,11 @@ class Deconvolution():
         svr_2 = svr_2.reindex(sorted(svr_2.columns), axis=1)
         svr_2 = svr_2 * 100
 
+        svr_2.to_csv(prediction_saved_names[7])
+        i = i+1
+
         # puts all dataframe objects into a list
         predictions =  [cellanneal_1, cellanneal_2, kassandra_all1, kassandra_all2, kassandra_child1, kassandra_child2, svr_1, svr_2]
-        prediction_saved_names = ['cellanneal_GSE107572.csv' , 
-                                  'cellanneal_GSE1479433.csv', 
-                                  'kassandra_all_GSE107572.csv', 
-                                  'kassandra_all_GSE1479433.csv', 
-                                  'kassandra_child_GSE107572.csv', 
-                                  'kassandra_child_GSE1479433.csv', 
-                                  'svr_GSE107572.csv', 
-                                  'svr_GSE1479433.csv']
-        
-        # save prediction matrices
-        for i in range(len(predictions)):
-            predictions[i].to_csv(+prediction_saved_names[i])
  
         return predictions
 
@@ -361,10 +384,10 @@ class Deconvolution():
         # how to score final to find minimums for rows
         if statistic == 'pearson' or statistic == 'r2':
             df_final['winners value'] = df_final[name_list].max(axis=1)
-            df_final['winners'] = df_final[name_list].abs().idxmax(axis=1)
+            df_final['winners'] = df_final[name_list].idxmax(axis=1)
         if statistic == 'diff' or statistic == 'rmse':
             df_final['winners value'] = df_final[name_list].abs().min(axis=1)
-            df_final['winners'] = df_final[name_list].abs().idxmin(axis=1)
+            df_final['winners'] = df_final[name_list].idxmin(axis=1)
         # Value Counts of the dataframe
         if cell:
             print("### Here are the results of the methods based on cell specific & benchmarked on {} ###\n\n".format(statistic))
