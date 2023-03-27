@@ -812,6 +812,83 @@ class Plot():
         del df
         
         return ax
+    
+    def benchmark_rmse(self, df_list, cytof, name_list):
+
+        df_final = pd.DataFrame()
+        length = 999
+        for i, df in enumerate(df_list):
+            ind_names = df.dropna().index.intersection(cytof.dropna().index)
+            col_names = df.dropna().columns.intersection(cytof.dropna().columns)
+            predicted_values = df.loc[ind_names, col_names]
+            true_values = cytof.loc[ind_names, col_names]
+            predicted_values = predicted_values.T
+            true_values = true_values.T
+            cells = true_values.columns
+            stat = statsTest()
+
+            temp2 = predicted_values.shape[1]
+            if temp2 < length:
+                length = temp2
+
+            rmse_list = []
+            for x, cell in enumerate(cells):
+                val = stat.rmse(predicted_values[cell], true_values[cell])
+                rmse_list.append(val)
+            rmse_list = rmse_list[0:length]
+            df_final[name_list[i]] = rmse_list
+            if i == 0:
+                index_name = predicted_values.columns
+                df_final.index = index_name
+        
+        sns.lineplot(data=df_final)
+        sns.scatterplot(data=df_final, legend=False)
+        plt.xlabel("Cell Types")
+        plt.ylabel("RMSE")
+        plt.title("RMSE across different Methods at Cell type level")
+                
+
+    def benchmark_correlation(self, df_list, cytof, name_list):
+        df_final = pd.DataFrame()
+        length = 999
+        for i, df in enumerate(df_list):
+            ind_names = df.index.intersection(cytof.index)
+            col_names = df.columns.intersection(cytof.columns)
+            predicted_values = df.loc[ind_names, col_names].astype(float)
+            true_values = cytof.loc[ind_names, col_names].astype(float)
+            predicted_values = predicted_values.T
+            true_values = true_values.T
+            cells = true_values.columns
+            stat = statsTest()
+
+            temp2 = predicted_values.shape[1]
+            if temp2 < length:
+                length = temp2
+
+            r_list = []
+            for cell in cells:
+                val = stat.correlation(predicted_values[cell], true_values[cell])
+                r_list.append(val)
+            r_list = r_list[0:length]
+            df_final[name_list[i]] = r_list
+            if i == 0:
+                index_name = predicted_values.columns
+                df_final.index = index_name
+        
+        display(df_final)
+        
+        #sns.lineplot(data=df_final)
+        # sns.scatterplot(data=df_final, x='ind', y='cellanneal', legend=False)
+        # sns.scatterplot(data=df_final, x='ind', y='Kassandra', legend=False)
+        # sns.scatterplot(data=df_final, x='ind', y='SVR', legend=False)
+        sns.lineplot(data=df_final)
+        # sns.lineplot(data=df_final['cellanneal'])
+        # sns.lineplot(data=df_final['Kassandra'], style='-')
+        # sns.lineplot(data=df_final['SVR'], style= '.')
+        #plt.ylim([-1, 1])
+        plt.xlabel("Cell Types")
+        plt.ylabel("Pearson Correlation (r)")
+        plt.title("Pearson Correlation across different Methods at Cell type level")
 
     def qq(self, predicted_values, true_values):
         '''
