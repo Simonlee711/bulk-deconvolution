@@ -307,7 +307,7 @@ class Deconvolution():
  
         return predictions
 
-    def benchmark(self, df_list, true, name_list = ['cellanneal', 'Kassandra', 'SVR'], cell=True, sample=False, statistic='pearson'):
+    def benchmark(self, df_list, true, name_list = ['cellanneal', 'Kassandra', 'SVR'], cell=True, sample=False, statistic='rmse'):
         '''
         A function that takes in all the predictions dataframes and benchmarks with true data measurements
         
@@ -362,7 +362,7 @@ class Deconvolution():
                     val = stat.correlation(predicted_values[cell], true_values[cell])
                 elif statistic == 'r2':
                     val = stat.R_squared(predicted_values[cell], true_values[cell])
-                elif statistic == 'diff':
+                elif statistic == 'residual':
                     val = predicted_values[cell] - true_values[cell]
                 elif statistic == 'rmse':
                     val = stat.rmse(predicted_values[cell], true_values[cell])
