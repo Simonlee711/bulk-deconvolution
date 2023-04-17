@@ -60,6 +60,6 @@ In terms of retraining models from scratch, please be aware of the basic deconvo
 
 ### Authors
 
-Simon Lee - Data Science Co-op, slee@celsiustx.com
+Simon Lee - Data Science, slee@celsiustx.com
 
 
