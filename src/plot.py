@@ -17,8 +17,9 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error as mse
 from sklearn.metrics import r2_score
 from stats import statsTest
-
+from matplotlib.patches import Patch
 from matplotlib.axes._axes import _log as matplotlib_axes_logger
+from scipy import stats
 matplotlib_axes_logger.setLevel('ERROR')
 
 class Plot():
@@ -132,10 +133,10 @@ class Plot():
         predicted_values = predicted_values.loc[ind_names, col_names]
         true_values = true_values.loc[ind_names, col_names]
 
-        if len(ind_names) < 4:
+        if len(ind_names) < 5:
             num_ncols = len(ind_names)
         else:
-            num_ncols = 4
+            num_ncols = 5
 
         num_nrows = (len(ind_names) - 1) // 6 + 1
         
@@ -206,11 +207,11 @@ class Plot():
         predicted_values = predicted_values.loc[ind_points].astype(float)
         true_values = true_values.loc[ind_points].astype(float)
         if corr_title:
-            corrcoef, pval = pearsonr(predicted_values, true_values)
+            corrcoef, pval = stats.spearmanr(predicted_values, true_values)
             corrcoef = str(round(corrcoef, corr_rounding))
             pval = str(round(pval, 3))
             if title is not None:
-                ax.set_title('{title}, corr = {corr}\np = {p}'.format(title=title,
+                ax.set_title('{title}, Spearman = {corr}\np = {p}'.format(title=title,
                                                                     corr=corrcoef,
                                                                     p=pval),
                             size=title_font, pad=pad)
@@ -220,17 +221,18 @@ class Plot():
                             size=title_font, pad=pad)
         elif title is not None:
             ax.set_title(title, size=title_font, pad=pad)
-        ax.set_xlabel(predicted_name, size=labels_font, labelpad = labelpad)
-        ax.set_ylabel(true_name, size=labels_font, labelpad = labelpad)
+        ax.set_xlabel(true_name, size=labels_font, labelpad = labelpad)
+        ax.set_ylabel(predicted_name, size=labels_font, labelpad = labelpad)
         ax.tick_params(labelsize=ticks_size)
-
-        ax.set_xlim(-0.5, max(1.2 * max(predicted_values), min_xlim))
-        ax.set_ylim(-0.5, max(1.2 * max(true_values), min_ylim))
+        ax.set_xlim(0, 1.0)
+        ax.set_ylim(0, 1.0)
+        ax.set_xticks([0,0.2,0.4,0.6,0.8,1.0])
+        ax.set_yticks([0,0.2,0.4,0.6,0.8,1.0])
 
         if single_color != '#999999':
-            ax.scatter(predicted_values, true_values, s=s, c=single_color)
+            ax.scatter(true_values, predicted_values, s=s, c=single_color)
         else:
-            ax.scatter(predicted_values, true_values, s=s, c=color)
+            ax.scatter(true_values, predicted_values, s=s, c=color)
 
         if corr_line:
             self.print_fitted_line(predicted_values, true_values, ax=ax, linewidth=linewidth, line_color=line_color)
@@ -257,8 +259,8 @@ class Plot():
         if ax is None:
             fig, ax = plt.subplots(figsize=figsize)
 
-        fit_coefs = np.polyfit(x_values, y_values, deg=1)
-        fit_values = np.sort(x_values)
+        fit_coefs = np.polyfit(y_values, x_values, deg=1)
+        fit_values = np.sort(y_values)
         ax.plot(fit_values, fit_coefs[0] * fit_values + fit_coefs[1], linewidth=linewidth, color=line_color)
 
         return ax
@@ -372,15 +374,16 @@ class Plot():
         
         ind_names = predicted_values.index.intersection(true_values.index)
         col_names = predicted_values.columns.intersection(true_values.columns)
+        print(ind_names, col_names)
         predicted_values = predicted_values.loc[ind_names, col_names]
         true_values = true_values.loc[ind_names, col_names]
 
-        if len(ind_names) < 4:
+        if len(ind_names) < 5:
             num_ncols = len(ind_names)
         else:
-            num_ncols = 4
+            num_ncols = 5
 
-        num_nrows = (len(ind_names) - 1) // 6 + 1
+        num_nrows = (len(ind_names) - 1) // 6+1
         
         figsize = (figsize[0], figsize[0] * num_nrows / num_ncols)
         fig, axs = plt.subplots(num_nrows, num_ncols, figsize=figsize)
@@ -463,7 +466,7 @@ class Plot():
 
         maximum = max(1.2 * max(predicted_values), min_xlim)
 
-        ax.set_xlim(-0.5,maximum*1.5)
+        ax.set_xlim(0,1.0)
         ax.set_ylim(df['diff'].mean() -4* df['diff'].std(),df['diff'].mean() + 3* df['diff'].std())
         
         ax.scatter(df['avg'], df['diff'], s=s, c=color)
@@ -814,6 +817,17 @@ class Plot():
         return ax
     
     def benchmark_rmse(self, df_list, cytof, name_list):
+        '''
+        A benchmarking plot that shows the RMSE at the cell type level which is much more informative than a whole cell rmse plot
+
+        Parameters:
+            df_list (list): a list object of dataframes that contains all the cell composition predictions
+            cytof (df): a dataframe object that contains the "ground truth" to calculate RMSE 
+            name_list (list): a list of strings that is needed for plotting purposes
+
+        Returns:
+            None
+        '''
 
         df_final = pd.DataFrame()
         length = 999
@@ -849,6 +863,17 @@ class Plot():
                 
 
     def benchmark_correlation(self, df_list, cytof, name_list):
+        '''
+        A benchmarking plot that shows the Pearson Correlation at the cell type level which is much more informative than a whole cell Pearson Correlation plot
+
+        Parameters:
+            df_list (list): a list object of dataframes that contains all the cell composition predictions
+            cytof (df): a dataframe object that contains the "ground truth" to calculate RMSE 
+            name_list (list): a list of strings that is needed for plotting purposes
+
+        Returns:
+            None
+        '''
         df_final = pd.DataFrame()
         length = 999
         for i, df in enumerate(df_list):
@@ -890,11 +915,42 @@ class Plot():
         plt.ylabel("Pearson Correlation (r)")
         plt.title("Pearson Correlation across different Methods at Cell type level")
 
-    def qq(self, predicted_values, true_values):
-        '''
-        Author Simon Lee
+def boxlplot(df1,df2,title,type):
+    patch_artist=True
+    datasets = [df1.T,df2.T]
 
-        Quantile Quantile plot. If the predicted and true arrays have similar probability distributions we should get a linear line but if there is some transformation along the x or y axis we know there is some technical bias involved indicating a "poor fit"
-        '''
-        pass    
+    colours = ['red','blue']
+
+    groups = ['Cellanneal', 'SVR']
+
+    x_pos_range = np.arange(len(datasets)) / (len(datasets) - 1)
+    x_pos = (x_pos_range * 0.5) + 0.75
+
+    for i, data in enumerate(datasets):
+        bp = plt.boxplot(
+            np.array(data), sym='', whis=[0, 100], widths=0.6 / len(datasets),
+            labels=list(datasets[0]), patch_artist=True,
+            positions=[x_pos[i] + j * 1 for j in range(len(data.T))]
+        )
+        # Fill the boxes with colours (requires patch_artist=True)
+        k = i % len(colours)
+        for box in bp['boxes']:
+            box.set(facecolor=colours[k])
+        for element in ['boxes', 'fliers', 'means', 'medians']:
+            plt.setp(bp[element], color=colours[k])
+        for element in ['whiskers', 'caps']:
+            plt.setp(bp[element], color=colours[k])
+            plt.setp(bp[element], color=colours[k])
+    # Legend
+    legend_elements = []
+    for i in range(len(datasets)):
+        j = i % len(groups)
+        k = i % len(colours)
+        legend_elements.append(Patch(facecolor=colours[k], label=groups[j]))
+    plt.legend(handles=legend_elements, fontsize=8)
+    plt.xticks(((np.arange(len(list(datasets[0]))) + 1)),rotation=90)
+    plt.title(title)
+    plt.ylabel(type)
+    plt.xlabel("Cell Types")
+    plt.show()
     

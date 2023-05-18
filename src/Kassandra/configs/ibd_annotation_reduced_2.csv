@@ -1,0 +1,349 @@
+,Dataset,Cell_type
+0,RNASeq-tumor-210422_NovaB_Sample_20,Goblet Cell
+1,RNASeq-tumor-210615_NovaB_Sample_11,CD209+ moDC
+2,210514_NovaA_Sample_50,Blood Endothelial Cell
+3,210514_NovaA_Sample_137,B_cell
+4,210514_NovaA_Sample_63,Post-capillary venules
+5,RNASeq-tumor-210302-NovaA_Sample_27,Proliferating Stromal Cell
+6,RNASeq-tumor-210318_NovaB_Sample_10,Neutrophils
+7,RNASeq-tumor-210616_NovaA_Sample_43,CD8 SELL Naive
+8,RNASeq-normal-201214_NovaA_Sample2,Arterial Pericyte
+9,210514_NovaA_Sample_14,Mast Cell
+10,RNASeq-tumor-210616_NovaA_Sample_64,Memory B cell
+11,RNASeq-tumor-210615_NovaA_Sample_14,CD8 Effector
+12,210514_NovaA_Sample_75,Neutrophils
+13,RNASeq-tumor-210609_NovaA_Sample_15,Goblet Cell
+14,RNASeq-tumor-210609_NovaA_Sample_24,gd T cell 1
+15,210514_NovaA_Sample_69,CD4 SELL naive
+16,RNASeq-normal-210108-NovaB_Sample18,Naive B cell
+17,RNASeq-normal-201117_NovaB_Sample19,Mast Cell
+18,210514_NovaA_Sample_153,Epithelium
+19,RNASeq-tumor-210616_NovaA_Sample_21,Proliferating myeloid
+20,RNASeq-tumor-210615_NovaB_Sample_20,Tuft Cell
+21,RNASeq-tumor-210318_NovaB_Sample_18,Mast Cell
+22,210514_NovaA_Sample_142,MAIT
+23,RNASeq-tumor-210615_NovaA_Sample_24,Resident Macrophage
+24,210514_NovaA_Sample_77,GC-like B cell
+25,RNASeq-tumor-210318_NovaB_Sample_8,gd T cell 1
+26,210514_NovaA_Sample_101,T_cell
+27,RNASeq-normal-201214_NovaA_Sample9,CD209+ moDC
+28,RNASeq-tumor-210318_NovaB_Sample_16,Glial Cell
+29,210514_NovaA_Sample_37,CD4 Tfh
+30,RNASeq-tumor-210609_NovaA_Sample_13,ILC3
+31,210514_NovaA_Sample_169,Goblet Cell
+32,RNASeq-tumor-210609_NovaA_Sample_23,Enteroendocrine Cell
+33,210514_NovaA_Sample_74,CD4 Tfh
+34,RNASeq-tumor-210615_NovaB_Sample_7,CD4 Tph
+35,210514_NovaA_Sample_45,Goblet Cell
+36,RNASeq-normal-201214_NovaA_Sample29,Pericyte
+37,210514_NovaA_Sample_141,IL7R+ Activated DC
+38,210514_NovaA_Sample_136,Neutrophils
+39,RNASeq-normal-201214_NovaA_Sample16,Plasma Cell
+40,RNASeq-tumor-210615_NovaA_Sample_23,CD83+ CLEC9A+ DC
+41,210514_NovaA_Sample_179,CD209+ moDC
+42,RNASeq-tumor-210616_NovaA_Sample_40,gd T cell 2
+43,210514_NovaA_Sample_68,Enteroendocrine Cell
+44,210514_NovaA_Sample_81,ILC3
+45,210514_NovaA_Sample_118,CD4 TRM
+46,210514_NovaA_Sample_120,Plasmablast
+47,RNASeq-normal-210108-NovaB_Sample17,gd T cell 2
+48,210514_NovaA_Sample_70,CD4 TRM
+49,RNASeq-normal-210108-NovaB_Sample14,Stroma
+50,RNASeq-tumor-210302-NovaA_Sample_24,Enterocyte
+51,RNASeq-tumor-210318_NovaB_Sample_23,Proliferating T cells
+52,RNASeq-tumor-210616_NovaA_Sample_19,Naive B cell
+53,RNASeq-tumor-210318_NovaB_Sample_15,Naive B cell
+54,RNASeq-tumor-210616_NovaA_Sample_49,Goblet Cell
+55,RNASeq-normal-210108-NovaB_Sample23,CD8 IEL
+56,RNASeq-tumor-210615_NovaA_Sample_16,Neutrophils
+57,210514_NovaA_Sample_24,Epithelium
+58,210514_NovaA_Sample_54,Enterocyte
+59,RNASeq-normal-201214_NovaA_Sample25,IL7R+ Activated DC
+60,RNASeq-tumor-210302-NovaA_Sample_16,CD83+ CLEC9A+ DC
+61,RNASeq-tumor-210615_NovaB_Sample_23,Memory B cell
+62,RNASeq-tumor-210616_NovaA_Sample_22,MAIT
+63,RNASeq-tumor-210616_NovaA_Sample_53,Proliferating myeloid
+64,210514_NovaA_Sample_13,Epithelium
+65,210514_NovaA_Sample_140,CD8 Effector
+66,RNASeq-normal-201227_NovaA_Sample10,Memory B cell
+67,210514_NovaA_Sample_171,Epithelial Stem Cell
+68,RNASeq-normal-201227_NovaA_Sample13,Plasmablast
+69,RNASeq-normal-201214_NovaA_Sample5,CD83- CLEC9A+ DC
+70,RNASeq-normal-201214_NovaA_Sample10,Epithelial M Cell
+71,RNASeq-tumor-210318_NovaB_Sample_24,CD4 TRM
+72,210514_NovaA_Sample_16,Inflammatory Fibroblast
+73,210514_NovaA_Sample_121,Tuft Cell
+74,RNASeq-tumor-210615_NovaA_Sample_15,NK
+75,210514_NovaA_Sample_144,Goblet Cell
+76,RNASeq-normal-201214_NovaA_Sample34,Inflammatory Fibroblast
+77,RNASeq-tumor-210616_NovaA_Sample_62,Post-capillary venules
+78,RNASeq-normal-201214_NovaA_Sample1,CD4 Tph
+79,RNASeq-tumor-210615_NovaA_Sample_21,Arterial Pericyte
+80,RNASeq-tumor-210616_NovaA_Sample_54,gd T cell 2
+81,RNASeq-tumor-210615_NovaB_Sample_29,Smooth Muscle Cell
+82,RNASeq-tumor-210609_NovaA_Sample_17,CD83+ CLEC9A+ DC
+83,RNASeq-tumor-210615_NovaA_Sample_28,Post-capillary venules
+84,RNASeq-tumor-210302-NovaA_Sample_15,B_cell
+85,RNASeq-tumor-210616_NovaA_Sample_66,ILC3
+86,RNASeq-normal-201214_NovaA_Sample33,Myofibroblast
+87,RNASeq-normal-201214_NovaA_Sample12,Arterial Pericyte
+88,RNASeq-tumor-210616_NovaA_Sample_48,Epithelial Stem Cell
+89,RNASeq-tumor-210609_NovaA_Sample_14,CD83- CLEC9A+ DC
+90,RNASeq-tumor-210318_NovaB_Sample_13,Myeloid
+91,RNASeq-normal-210108-NovaB_Sample21,Epithelial Progenitor Cell
+92,RNASeq-normal-201214_NovaA_Sample3,CD4 Tfh
+93,RNASeq-tumor-210615_NovaB_Sample_32,GC-like B cell
+94,RNASeq-tumor-210616_NovaA_Sample_56,CD4 TRM
+95,RNASeq-normal-201214_NovaA_Sample11,gd T cell 1
+96,210514_NovaA_Sample_110,CD8 SELL Naive
+97,RNASeq-normal-201227_NovaA_Sample8,Enterocyte
+98,RNASeq-tumor-210616_NovaA_Sample_42,Post-capillary venules
+99,210514_NovaA_Sample_148,Resident Macrophage
+100,RNASeq-normal-201214_NovaA_Sample31,CD4 Tfh
+101,RNASeq-tumor-210302-NovaA_Sample_28,CD8 IEL
+102,210514_NovaA_Sample_105,CD4 SELL naive
+103,RNASeq-tumor-210616_NovaA_Sample_63,Arterial Pericyte
+104,RNASeq-tumor-210318_NovaB_Sample_3,Monocyte Inflammatory
+105,RNASeq-tumor-210615_NovaB_Sample_13,CD83- CLEC9A+ DC
+106,RNASeq-tumor-210615_NovaA_Sample_13,Myeloid
+107,210514_NovaA_Sample_124,GC-like B cell
+108,RNASeq-tumor-210318_NovaB_Sample_5,Tuft Cell
+109,210514_NovaA_Sample_182,Epithelial Stem Cell
+110,210514_NovaA_Sample_183,Naive B cell
+111,RNASeq-tumor-210615_NovaA_Sample_29,B_cell
+112,RNASeq-tumor-210318_NovaB_Sample_14,Arterial Pericyte
+113,210514_NovaA_Sample_133,ILC3
+114,RNASeq-normal-210108-NovaB_Sample22,Memory B cell
+115,RNASeq-tumor-210423_NovaB_Sample_14,Goblet Cell
+116,RNASeq-tumor-210318_NovaB_Sample_31,CD209+ moDC
+117,RNASeq-tumor-210615_NovaB_Sample_16,Myeloid
+118,RNASeq-tumor-210615_NovaA_Sample_10,CD4 Tph
+119,210514_NovaA_Sample_6,Monocyte Inflammatory
+120,210514_NovaA_Sample_180,Plasma Cell
+121,RNASeq-normal-201214_NovaA_Sample28,Memory B cell
+122,RNASeq-tumor-210318_NovaB_Sample_22,Goblet Cell
+123,RNASeq-normal-201227_NovaA_Sample9,CLEC10A+ DC
+124,210514_NovaA_Sample_38,CD4 Treg
+125,210514_NovaA_Sample_97,CLEC10A+ DC
+126,RNASeq-tumor-210302-NovaA_Sample_23,Monocyte Inflammatory
+127,RNASeq-tumor-210318_NovaB_Sample_21,Proliferating T cells
+128,RNASeq-tumor-210615_NovaB_Sample_9,Proliferating Stromal Cell
+129,RNASeq-tumor-210616_NovaA_Sample_59,Plasma Cell
+130,210514_NovaA_Sample_4,Enteroendocrine Cell
+131,RNASeq-tumor-210616_NovaA_Sample_47,Myofibroblast
+132,RNASeq-tumor-210615_NovaA_Sample_12,CD4 SELL naive
+133,RNASeq-normal-201214_NovaA_Sample20,CD8 Effector
+134,RNASeq-tumor-210615_NovaB_Sample_31,Plasma Cell
+135,RNASeq-tumor-210615_NovaA_Sample_30,CD83+ CLEC9A+ DC
+136,210514_NovaA_Sample_82,Myeloid
+137,210514_NovaA_Sample_80,Epithelial Progenitor Cell
+138,210514_NovaA_Sample_73,Inflammatory Fibroblast
+139,210514_NovaA_Sample_11,Myofibroblast
+140,RNASeq-tumor-210318_NovaB_Sample_7,CD4 SELL naive
+141,RNASeq-tumor-210318_NovaB_Sample_28,CD4 Tfh
+142,210514_NovaA_Sample_102,CD4 TRM
+143,RNASeq-normal-201214_NovaA_Sample6,Fibroblast
+144,RNASeq-tumor-210615_NovaA_Sample_17,Plasmablast
+145,RNASeq-tumor-210615_NovaA_Sample_20,Myofibroblast
+146,210514_NovaA_Sample_174,Smooth Muscle Cell
+147,RNASeq-normal-201214_NovaA_Sample22,Myofibroblast
+148,210514_NovaA_Sample_98,Goblet Cell
+149,RNASeq-tumor-210615_NovaB_Sample_8,Monocyte Inflammatory
+150,210514_NovaA_Sample_42,Post-capillary venules
+151,RNASeq-tumor-210422_NovaB_Sample_17,Goblet Cell
+152,210514_NovaA_Sample_147,Mast Cell
+153,RNASeq-normal-210108-NovaB_Sample9,CD8 IEL
+154,RNASeq-tumor-210318_NovaB_Sample_19,Enteroendocrine Cell
+155,210514_NovaA_Sample_109,T_cell
+156,RNASeq-normal-201202_Next_Sample6,gd T cell 2
+157,RNASeq-tumor-210615_NovaB_Sample_12,Proliferating Stromal Cell
+158,RNASeq-tumor-210616_NovaA_Sample_68,Epithelial Progenitor Cell
+159,RNASeq-tumor-210615_NovaA_Sample_11,CD8 Effector
+160,RNASeq-tumor-210609_NovaA_Sample_18,ILC3
+161,210514_NovaA_Sample_3,Tuft Cell
+162,RNASeq-tumor-210609_NovaA_Sample_12,CD83- CLEC9A+ DC
+163,RNASeq-normal-201214_NovaA_Sample23,Pericyte
+164,RNASeq-tumor-210318_NovaB_Sample_32,Glial Cell
+165,RNASeq-normal-201214_NovaA_Sample4,Epithelial M Cell
+166,210514_NovaA_Sample_22,CD4 Tph
+167,RNASeq-tumor-210609_NovaA_Sample_22,CD8 Effector
+168,210514_NovaA_Sample_12,IL7R+ Activated DC
+169,RNASeq-tumor-210616_NovaA_Sample_35,CD8 IEL
+170,RNASeq-tumor-210609_NovaA_Sample_16,GC-like B cell
+171,RNASeq-normal-201227_NovaA_Sample12,Resident Macrophage
+172,210514_NovaA_Sample_79,CD8 IEL
+173,RNASeq-tumor-210616_NovaA_Sample_39,Proliferating Stromal Cell
+174,RNASeq-normal-201214_NovaA_Sample35,CLEC10A+ DC
+175,210514_NovaA_Sample_106,Proliferating Stromal Cell
+176,210514_NovaA_Sample_103,NK
+177,210514_NovaA_Sample_107,Proliferating T cells
+178,210514_NovaA_Sample_47,Neutrophils
+179,210514_NovaA_Sample_62,MAIT
+180,210514_NovaA_Sample_67,B_cell
+181,RNASeq-tumor-210615_NovaB_Sample_4,Pericyte
+182,RNASeq-tumor-210615_NovaA_Sample_22,CD8 IEL
+183,210514_NovaA_Sample_112,Glial Cell
+184,210514_NovaA_Sample_10,Memory B cell
+185,RNASeq-tumor-210318_NovaB_Sample_9,CD209+ moDC
+186,RNASeq-normal-201227_NovaA_Sample2,Memory B cell
+187,RNASeq-normal-201214_NovaA_Sample17,CD8 IEL
+188,RNASeq-tumor-210615_NovaB_Sample_34,T_cell
+189,210514_NovaA_Sample_151,CD4 Tph
+190,RNASeq-tumor-210616_NovaA_Sample_61,CD4 Tfh
+191,RNASeq-normal-201202_Next_Sample2,MAIT
+192,210514_NovaA_Sample_154,Myeloid
+193,RNASeq-normal-201214_NovaA_Sample30,CLEC10A+ DC
+194,210514_NovaA_Sample_84,Myofibroblast
+195,RNASeq-tumor-210609_NovaA_Sample_20,Enterocyte
+196,210514_NovaA_Sample_5,Epithelial M Cell
+197,210514_NovaA_Sample_52,Blood Endothelial Cell
+198,RNASeq-normal-210108-NovaB_Sample15,Resident Macrophage
+199,RNASeq-normal-201214_NovaA_Sample7,Plasma Cell
+200,RNASeq-tumor-210616_NovaA_Sample_50,Plasma Cell
+201,RNASeq-tumor-210318_NovaB_Sample_20,Myofibroblast
+202,RNASeq-tumor-210615_NovaB_Sample_18,Enterocyte
+203,RNASeq-tumor-210615_NovaB_Sample_5,CD8 Effector
+204,RNASeq-tumor-210615_NovaB_Sample_17,Epithelium
+205,RNASeq-tumor-210615_NovaA_Sample_26,CD4 SELL naive
+206,210514_NovaA_Sample_49,Tuft Cell
+207,RNASeq-tumor-210615_NovaB_Sample_1,Proliferating T cells
+208,RNASeq-tumor-210318_NovaB_Sample_27,Monocyte Inflammatory
+209,210514_NovaA_Sample_65,CD4 TRM
+210,210514_NovaA_Sample_9,MAIT
+211,210514_NovaA_Sample_99,Neutrophils
+212,RNASeq-tumor-210616_NovaA_Sample_55,CD4 SELL naive
+213,210514_NovaA_Sample_15,GC-like B cell
+214,210514_NovaA_Sample_2,Proliferating myeloid
+215,RNASeq-normal-201227_NovaA_Sample7,CD8 SELL Naive
+216,RNASeq-tumor-210609_NovaA_Sample_21,Enteroendocrine Cell
+217,210514_NovaA_Sample_94,Monocyte Inflammatory
+218,RNASeq-normal-201202_Next_Sample5,Resident Macrophage
+219,210514_NovaA_Sample_72,Proliferating Stromal Cell
+220,RNASeq-tumor-210616_NovaA_Sample_60,T_cell
+221,210514_NovaA_Sample_177,CD83+ CLEC9A+ DC
+222,RNASeq-tumor-210616_NovaA_Sample_65,Mast Cell
+223,RNASeq-tumor-210615_NovaA_Sample_27,CD83+ CLEC9A+ DC
+224,210514_NovaA_Sample_173,CD8 IEL
+225,RNASeq-tumor-210318_NovaB_Sample_4,Myeloid
+226,RNASeq-tumor-210318_NovaB_Sample_29,Glial Cell
+227,RNASeq-tumor-210615_NovaA_Sample_25,CD209+ moDC
+228,RNASeq-tumor-210615_NovaB_Sample_19,MAIT
+229,RNASeq-tumor-210616_NovaA_Sample_51,Monocyte Inflammatory
+230,RNASeq-normal-201117_NovaB_Sample20,Fibroblast
+231,210514_NovaA_Sample_40,Memory B cell
+232,RNASeq-tumor-210615_NovaB_Sample_3,Goblet Cell
+233,210514_NovaA_Sample_150,GC-like B cell
+234,RNASeq-normal-201202_Next_Sample3,CLEC10A+ DC
+235,210514_NovaA_Sample_21,ILC3
+236,RNASeq-tumor-210422_NovaB_Sample_19,Proliferating T cells
+237,RNASeq-tumor-210609_NovaA_Sample_19,CD4 SELL naive
+238,RNASeq-tumor-210616_NovaA_Sample_57,MAIT
+239,RNASeq-normal-201214_NovaA_Sample21,CD8 SELL Naive
+240,RNASeq-tumor-210615_NovaA_Sample_31,Monocyte Inflammatory
+241,210514_NovaA_Sample_146,CD209+ moDC
+242,RNASeq-tumor-210318_NovaB_Sample_30,Neutrophils
+243,RNASeq-tumor-210616_NovaA_Sample_11,CD8 SELL Naive
+244,210514_NovaA_Sample_184,Inflammatory Fibroblast
+245,210514_NovaA_Sample_17,Proliferating Stromal Cell
+246,RNASeq-tumor-210615_NovaB_Sample_21,Proliferating myeloid
+247,210514_NovaA_Sample_35,CD4 Tfh
+248,RNASeq-tumor-210616_NovaA_Sample_34,Stroma
+249,210514_NovaA_Sample_92,Plasma Cell
+250,RNASeq-tumor-210616_NovaA_Sample_12,CD4 Th17
+251,RNASeq-tumor-210318_NovaB_Sample_12,CD4 Th17
+252,RNASeq-tumor-210616_NovaA_Sample_44,Post-capillary venules
+253,RNASeq-normal-201214_NovaA_Sample14,CD8 IEL
+254,210514_NovaA_Sample_19,CLEC10A+ DC
+255,210514_NovaA_Sample_53,Stroma
+256,210514_NovaA_Sample_134,CD4 Treg
+257,210514_NovaA_Sample_51,Plasma Cell
+258,210514_NovaA_Sample_176,Goblet Cell
+259,RNASeq-tumor-210615_NovaB_Sample_6,CD4 TRM
+260,210514_NovaA_Sample_78,Enterocyte
+261,RNASeq-normal-201214_NovaA_Sample26,Myofibroblast
+262,RNASeq-tumor-210615_NovaB_Sample_22,CD4 Tph
+263,210514_NovaA_Sample_138,T_cell
+264,RNASeq-tumor-210318_NovaB_Sample_34,Stroma
+265,RNASeq-tumor-210318_NovaB_Sample_11,CD8 IEL
+266,210514_NovaA_Sample_44,gd T cell 2
+267,210514_NovaA_Sample_100,CD4 TRM
+268,210514_NovaA_Sample_143,Mast Cell
+269,210514_NovaA_Sample_175,B_cell
+270,210514_NovaA_Sample_108,Goblet Cell
+271,210514_NovaA_Sample_178,Tuft Cell
+272,210514_NovaA_Sample_46,gd T cell 1
+273,210514_NovaA_Sample_139,Blood Endothelial Cell
+274,RNASeq-tumor-210318_NovaB_Sample_25,CD4 Treg
+275,210514_NovaA_Sample_135,IL7R+ Activated DC
+276,RNASeq-normal-201227_NovaA_Sample11,Epithelial Stem Cell
+277,210514_NovaA_Sample_1,Monocyte Inflammatory
+278,210514_NovaA_Sample_122,CD8 IEL
+279,210514_NovaA_Sample_93,CD83+ CLEC9A+ DC
+280,RNASeq-tumor-210615_NovaA_Sample_18,Plasma Cell
+281,210514_NovaA_Sample_39,ILC3
+282,210514_NovaA_Sample_96,Myofibroblast
+283,RNASeq-tumor-210616_NovaA_Sample_32,Pericyte
+284,210514_NovaA_Sample_132,CD83+ CLEC9A+ DC
+285,RNASeq-tumor-210616_NovaA_Sample_52,Enteroendocrine Cell
+286,210514_NovaA_Sample_18,Monocyte Inflammatory
+287,RNASeq-normal-201117_NovaB_Sample21,CD4 SELL naive
+288,210514_NovaA_Sample_66,Goblet Cell
+289,RNASeq-tumor-210616_NovaA_Sample_58,Memory B cell
+290,RNASeq-tumor-210615_NovaB_Sample_10,CD4 Th17
+291,RNASeq-normal-201214_NovaA_Sample15,Memory B cell
+292,RNASeq-tumor-210616_NovaA_Sample_33,Glial Cell
+293,210514_NovaA_Sample_41,CD4 TRM
+294,RNASeq-normal-201214_NovaA_Sample13,Glial Cell
+295,210514_NovaA_Sample_71,IL7R+ Activated DC
+296,RNASeq-tumor-210302-NovaA_Sample_13,CD8 IEL
+297,210514_NovaA_Sample_181,gd T cell 1
+298,RNASeq-tumor-210302-NovaA_Sample_14,Myofibroblast
+299,RNASeq-tumor-210616_NovaA_Sample_10,Pericyte
+300,RNASeq-tumor-210423_NovaB_Sample_15,Post-capillary venules
+301,RNASeq-normal-210108-NovaB_Sample19,B_cell
+302,RNASeq-normal-201214_NovaA_Sample8,Epithelial M Cell
+303,RNASeq-tumor-210318_NovaB_Sample_2,Enterocyte
+304,RNASeq-normal-201214_NovaA_Sample24,NK
+305,RNASeq-tumor-210616_NovaA_Sample_46,ILC3
+306,210514_NovaA_Sample_83,Myeloid
+307,RNASeq-tumor-210615_NovaB_Sample_15,T_cell
+308,RNASeq-tumor-210318_NovaB_Sample_6,Stroma
+309,RNASeq-tumor-210616_NovaA_Sample_20,Myeloid
+310,210514_NovaA_Sample_36,Epithelial M Cell
+311,RNASeq-normal-201227_NovaA_Sample1,CD8 Effector
+312,RNASeq-tumor-210318_NovaB_Sample_26,Pericyte
+313,RNASeq-tumor-210616_NovaA_Sample_67,Inflammatory Fibroblast
+314,RNASeq-tumor-210615_NovaB_Sample_14,Epithelial Progenitor Cell
+315,210514_NovaA_Sample_145,CD4 Tfh
+316,RNASeq-normal-201214_NovaA_Sample19,Inflammatory Fibroblast
+317,210514_NovaA_Sample_76,Epithelial Stem Cell
+318,210514_NovaA_Sample_64,Resident Macrophage
+319,210514_NovaA_Sample_111,CD209+ moDC
+320,210514_NovaA_Sample_34,CD8 IEL
+321,210514_NovaA_Sample_172,Inflammatory Fibroblast
+322,RNASeq-normal-201214_NovaA_Sample32,GC-like B cell
+323,RNASeq-tumor-210615_NovaB_Sample_33,Epithelial Progenitor Cell
+324,210514_NovaA_Sample_149,Plasmablast
+325,210514_NovaA_Sample_23,gd T cell 2
+326,RNASeq-tumor-210318_NovaB_Sample_1,T_cell
+327,RNASeq-tumor-210615_NovaA_Sample_19,Pericyte
+328,210514_NovaA_Sample_104,CD4 TRM
+329,RNASeq-tumor-210609_NovaA_Sample_25,CD83+ CLEC9A+ DC
+330,210514_NovaA_Sample_48,Mast Cell
+331,RNASeq-tumor-210318_NovaB_Sample_33,Tuft Cell
+332,RNASeq-normal-201214_NovaA_Sample18,Neutrophils
+333,RNASeq-normal-210108-NovaB_Sample20,Myeloid
+334,RNASeq-tumor-210422_NovaB_Sample_18,Inflammatory Fibroblast
+335,210514_NovaA_Sample_152,Goblet Cell
+336,RNASeq-tumor-210423_NovaB_Sample_13,Tuft Cell
+337,RNASeq-normal-201227_NovaA_Sample3,NK
+338,210514_NovaA_Sample_20,CD4 Tph
+339,210514_NovaA_Sample_123,Epithelial M Cell
+340,RNASeq-tumor-210423_NovaB_Sample_16,gd T cell 1
+341,RNASeq-tumor-210616_NovaA_Sample_45,CD83- CLEC9A+ DC
+342,RNASeq-tumor-210615_NovaA_Sample_9,Proliferating T cells
+343,RNASeq-tumor-210615_NovaB_Sample_2,Pericyte
+344,RNASeq-normal-201202_Next_Sample4,Proliferating Stromal Cell
+345,210514_NovaA_Sample_33,CD4 TRM
+346,RNASeq-tumor-210615_NovaB_Sample_30,Stroma
+347,RNASeq-normal-201214_NovaA_Sample27,Smooth Muscle Cell

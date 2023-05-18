@@ -37,8 +37,8 @@ class DeconvolutionModel:
     Base class for model training and prediction.
     """ 
     def __init__(self, cell_types: CellTypes,
-                 boosting_params_first_step = './Kassandra/configs/boosting_params/lgb_parameters_first_step.tsv',
-                 boosting_params_second_step = './Kassandra/configs/boosting_params/lgb_parameters_second_step.tsv',
+                 boosting_params_first_step = './Kassandra/configs/boosting_params/custom_first_step.tsv',
+                 boosting_params_second_step = './Kassandra/configs/boosting_params/custom_second_step.tsv',
                  genes_in_expression_path='./Kassandra/configs/genes_in_expression.txt',
                  l1_models: Dict = None,    
                  l2_models: Dict = None,
@@ -75,6 +75,7 @@ class DeconvolutionModel:
         start = timeit.default_timer()
         print('============== L1 models ==============')
         for i, cell in enumerate(self.cell_types.models):
+            print(cell)
             print(f'Generating mixes for {cell} model')
             start1 = timeit.default_timer()
             expr, values = mixer.generate(cell, genes=self.cell_types[cell].genes, random_seed=i+1)
@@ -82,7 +83,6 @@ class DeconvolutionModel:
             self.l1_models[cell] = self.train_l1_model(expr, values, cell)
             end1 = timeit.default_timer()
             print(f'Trained in:  {round(end1-start1, 1)} sec.')
-            print('\n')
 
         print('============== L2 models ==============')
         for i, cell in enumerate(self.cell_types.models):
@@ -93,7 +93,7 @@ class DeconvolutionModel:
             self.l2_models[cell] = self.train_l2_model(expr, values, cell)
             end1 = timeit.default_timer()
             print(f'Trained in:  {round(end1-start1, 1)} sec.')
-            print('\n')
+
         
         end = timeit.default_timer()
         print(f'Deconv model fitting done in: {round(end-start, 1)} sec.')
