@@ -74,7 +74,7 @@ class Mixers:
 
         self.tumor_mean = tumor_mean
         self.tumor_sd = tumor_sd
-        self.hyperexpression_fraction = hyperexpression_fraction
+        self.hyperexpression_fraction = hyperexpression_fraction 
         self.max_hyperexpr_level = max_hyperexpr_level
 
     def check_expressions(self, expr):
@@ -83,9 +83,10 @@ class Mixers:
         '''
         if not any(expr.max(axis=1) > np.log2(10**6)):
             raise ValueError("MODEL DOES NOT WORK WITH LOG NORMALIZED DATA. LINEARIZE YOUR EXPRESSION MATRXI.")
-        diff = set(self.cell_types.genes).difference(set(expr.index))
-        if diff:
-            raise ValueError("EXPRESSION MATRIX HAS TO CONTAIN AT LEAST ALL THE GENES THAT ARE USED AS A FEATURES")
+
+        # diff = set(self.cell_types.genes).difference(set(expr.index))
+        # if diff:
+        #     raise ValueError("EXPRESSION MATRIX HAS TO CONTAIN AT LEAST ALL THE GENES THAT ARE USED AS A FEATURES")
         diff = set(self.cell_types.genes).symmetric_difference(set(expr.index))
         if not diff:
             print(f'WARNING: YOU USING ONLY FEATURE GENES. MAKE SURE THAT NORMALIZATION IS CORRECT')
@@ -172,10 +173,12 @@ class Mixers:
         average_cells = {}
         cells_expr = self.cells_expr.loc[genes]
         for cell in cells_to_mix:
+        #for cell in ['Myeloid', 'Epithelium', 'Stroma', 'T_cell', 'B_cell']:
             cells_selection = self.select_cells_with_subtypes(cell)
             expressions_matrix = pd.DataFrame(np.zeros((len(cells_expr.index), self.num_points)),
                                               index=cells_expr.index,
                                               columns=range(self.num_points), dtype=float)
+
             for i in range(num_av):
                 if self.rebalance_param is not None:
                     cells_index = pd.Index(self.rebalance_samples_by_type(self.cells_annot.loc[cells_selection.index],
@@ -189,8 +192,11 @@ class Mixers:
                         cells_index = self.change_subtype_proportions(cell=cell,
                                                                       cells_index=cells_index)
                 samples = random.choice(cells_index, self.num_points)
+
                 expressions_matrix += cells_expr.loc[:, samples].values
+   
             average_cells[cell] = expressions_matrix / float(num_av)
+
         return average_cells
     
     def dirichlet_mixing(self, num_points: int, cells_to_mix: List[str]):
@@ -277,7 +283,6 @@ class Mixers:
         :param cells_index: pandas index of samples for cell type
         :returns: array of sample indexes oversampled for needed proportions
         """
-        
         cell_subtypes = self.cell_types.get_direct_subtypes(cell)
         specified_subtypes = set(self.proportions.dropna().index).intersection(cell_subtypes)
 

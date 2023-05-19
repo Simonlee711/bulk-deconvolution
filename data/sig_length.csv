@@ -1,0 +1,51 @@
+,Cell_type,length
+0,CD4 SELL naive,28
+1,CD4 TRM,3
+2,CD4 Tfh,10
+3,CD4 Th17,5
+4,CD4 Tph,50
+5,CD4 Treg,22
+6,CD8 Effector,22
+7,CD8 IEL,2
+8,ILC3,100
+9,MAIT,5
+10,NK,69
+11,Proliferating T cells,100
+12,gd T cell 1,22
+13,gd T cell 2,81
+14,Arterial Pericyte,100
+15,Blood Endothelial Cell,100
+16,Fibroblast,50
+17,Glial Cell,100
+18,Inflammatory Fibroblast,83
+19,Myofibroblast,38
+20,Pericyte,67
+21,Post-capillary venules,100
+22,Proliferating Stromal Cell,100
+23,Smooth Muscle Cell,100
+24,Enterocyte,78
+25,Enteroendocrine Cell,100
+26,Epithelial M Cell,87
+27,Epithelial Progenitor Cell,6
+28,Epithelial Stem Cell,100
+29,Goblet Cell,46
+30,Tuft Cell,100
+31,GC-like B cell,100
+32,Memory B cell,100
+33,Naive B cell,100
+34,Plasma Cell,10
+35,Plasmablast,7
+36,CD83+ CLEC9A+ DC,69
+37,CD83- CLEC9A+ DC,33
+38,CD209+ moDC,88
+39,CLEC10A+ DC,18
+40,IL7R+ Activated DC,94
+41,Mast Cell,100
+42,Monocyte Inflammatory,65
+43,Proliferating myeloid,84
+44,Resident Macrophage,16
+0,B Cell,95
+1,Epithelium,100
+2,Myeloid,100
+3,Stroma,100
+4,T Cell,100

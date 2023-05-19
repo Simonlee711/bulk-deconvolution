@@ -118,10 +118,12 @@ class Mixer:
         :random_seed: random seed
         :returns: tuple with dataframes of mixed expressions and rna proportions
         """
+
         np.random.seed(random_seed)
 
         if not genes:
             genes = self.cell_types[modeled_cell].genes
+
     
         mixed_cells_expr = pd.DataFrame(np.zeros((len(genes), self.num_points)),
                                         index=genes,

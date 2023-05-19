@@ -1,0 +1,386 @@
+General_cells:
+  parent_type: NULL 
+  cell_proportion: NULL 
+  rna_per_cell: NULL 
+  model: NULL 
+  genes: []
+
+Myeloid:
+  parent_type: General_cells
+  cell_proportion: 0.23404255319
+  rna_per_cell: 1
+  model: explicit
+  genes: [S100A12, LILRA3, FCN1, CLEC4E, S100A8, LILRB2, FCGR1A, ASGR2, CD300E, CD163, TLR8, P2RY13, CSF3R, CSTA, AC004791.2, LILRA5, CLEC9A, MS4A6A, RP11-365O16.3, FCER1A, CMA1, IGSF6, HDC, FPR3, CSF1R, MS4A4A, CLEC10A, CLEC12A, CTSG, SDS]
+
+Epithelium:
+  parent_type: General_cells
+  cell_proportion: 0.14893617021
+  rna_per_cell: 1
+  model: explicit
+  genes: [TMIGD1, SLC17A4, PRAP1, LYPD8, GUCA2B, CHP2, CKMT1B, HMGCS2, UGT2A3, BTNL3, C11orf86, GUCA2A, MS4A12, AQP8, CLCA4, PITX2, HNF1A-AS1, AKR1B10, SLC26A3, C1orf210, TM4SF5, CKMT1A, SH2D7, MEP1A, RP11-395B7.2, RP11-35P15.1, CLDN8, EDN3, CA1, KRT20]
+
+Stroma:
+  parent_type: General_cells
+  cell_proportion: 0.21276595744
+  rna_per_cell: 1
+  model: explicit
+  genes: [PCDHB16, PTN, ANGPTL1, MAB21L2, CP, MFAP4, FIGN, TCF21, CADM3, ABCA8, AC092652.1, SFTA1P, PCDHB4, NR2F2-AS1, PRR16, CYGB, OSR1, KRTDAP, FOXF1, NKX2-3, SFRP1, CLEC14A, PCDHB7, TMEM47, RN7SKP295, COL14A1, EFS, AC116035.1, PRRX1, BMP5]
+
+T_cell:
+  parent_type: General_cells
+  cell_proportion: 0.31914893617
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [TRAV4, CD3E, CD40LG, CD2, TRAT1, TRGC2, CD3G, GZMK, XCL1, XCL2, CXCR6, RP11-664D1.1, GZMM, CD3D, SIRPG, GZMH, KRT81, TMIGD2, EOMES, UBASH3A, RP11-222K16.2, CD7, SH2D1A, CD8A, THEMIS, TRDC, PRF1, CD247, RP11-18H21.1, IL18RAP]
+
+B_cell:
+  parent_type: General_cells
+  cell_proportion: 0.10638297872
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [LINC00525, IGHD, AC104699.1, AL928768.3, CD79A, CD19, PKHD1L1, LINC00494, AMPD1, IGLL1, IGHE, FCRLA, VPREB3, MS4A1, TNFRSF17, RP11-297B17.3, OSTN-AS1, RP11-625L16.3, AC096579.13, IGJ, RP11-301L8.2, FAM92B, TCL1A, LINC00582, FCRL5, FCRL1, DCC, AC104024.1, PAX5, NLRP7]
+
+CD4 SELL_naive:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CCL21, FDCSP, CCR7, TSHZ2, CCL19, VPREB3, TCL1A, CTSL]
+
+CD4 TRM:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [ANXA1, GREM2]
+
+CD4 Tfh:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CXCL13, HEY1, ST8SIA1, PASK, MCTP1, CHGB, CH25H, PTHLH, TSHZ2, REG1B, PEG10, IGFBP4, SMCO4, NMB]
+
+CD4 Th17:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [IL17A, IL22, SOX5, NTRK2, NMU, CCL20, IL17RE, ADAM12, COL5A1, KLRB1]
+
+CD4 Tph:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [ZBED2, IL17A, IL13, NRP2, CXCL13, MIR155HG, TNC, FLT1, LAG3, NTRK2, COL6A3, IL10, G0S2, NPW, CSF2, STARD13, TNFRSF4, CTLA4, C2CD4B, CCL20, ZEB2, PRDM1, GNA15, HPGDS, TNIP3, GAB2, C11orf96, STARD4, CD274, IRF4]
+
+CD4 Treg:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [PMCH, LIN7A, IL2RA, CPE, TWIST1, MEOX1, PPP1R26-AS1, ACTG2, CHIT1, CLEC7A, IL1R1, TNFRSF4, LRG1, LMCD1, CTLA4, BATF, ETV7, CTTNBP2NL, SEMA3G, IL10, SELP, LGMN, CCDC3, nan]
+
+CD8 Effector:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [GZMK, GZMH, VCAM1, ENC1, CCL4, CRTAM, HLA-DQA2, HLA-DQB2, NKG7, CCL5, DKK3, ETV1, HLA-DRB1, CMC1, GZMA, OASL, HLA-DPB1, CES1, IFNG, HLA-DRB5]
+
+CD8 IEL:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CCL5, IGFBP3]
+
+CD8 SELL Naive:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [FBLN2, S100B, CD248, C2orf40, AIF1, BEND5, SLC16A10, CITED4, PNPLA7, SOX8, KLF2, ICA1L, TPST1, CCR7, SULT1B1, PCSK1N, SOX4, TXNRD3, UBE2E2, FCN1, S100A8, S100A12, KCNMB4, REG4, MYO15B, CFP, SNPH]
+
+
+ILC3:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [PCDH9, HAS1, COL4A4, HOXA5, PTGS2, BMX, KIT, B3GALT5, CXCL2, KRT81, NPTX2, MYRFL, TGM2, KRT86, KRT7, ZNF385D, BCAS1, RRAD, LST1, TBX2, AFF3, BMP2, ZG16B, PLN, SOX18, LTC4S, AREG, F13A1, SERPINE1, GPRC5C]
+
+MAIT:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [NRN1, ME1, DAB2IP, KLRB1, IL1RL1, ABCG2, C2CD4B, CCL20, GZMK]
+
+
+NK:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [BAALC, FCGR3A, TYROBP, FGFBP2, GNLY, FCER1G, ITGAM, LDB2, ITGAX, ADAMTS1, KLRC1, NKG7, PRSS23, SPON2, GZMB, AKR1C3, B3GNT7, CCL3, KLRD1, TRDC, RANBP17, GAS7, XCL2, PDGFD, SYK, CYTL1, PDE6G, PLEK, IL18, TTC38]
+
+Proliferating T cells:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [DLGAP5, RRM2, FAM111B, BIRC5, GTSE1, ANLN, MKI67, ASPM, UBE2C, CCNB2, TYMS, TOP2A, PBK, DEPDC1, CENPA, CDK1, MYBL2, AURKB, CEP55, HMMR, CCNA2, CDC20, TPX2, HIST1H1B, TK1, CDCA3, NEK2, KIF14, ZWINT, KIF11]
+
+gd T cell 1:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [KLRC2, TRDC, METRNL, SCT, XCL1, NPTX2, WWTR1, TRGC2, PXDN, DLX2, XCL2, ITGAX, SOX4, GEM, IGHD, B3GNT7, SIPA1L2, CCL5, TRGC1, MMP25, GNLY, GAS7, PDGFD, CDH17, nan]
+
+gd T cell 2:
+  parent_type: T_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [KLRC2, AQP8, SLC51B, GUCA2B, FCRL4, TRDC, CA1, GUCA2A, LYPD8, FABP1, SLC26A3, CA4, MS4A12, TRGC1, GNLY, CCL5, CDH17, PRAP1, TRGC2, CLCA4, HMOX1, GZMA, HOPX, HMGCS2, ZG16, ITGA1, PHGR1, KRT20, UGT2B17, CLDN7]
+
+## STROMA
+
+Arterial Pericyte:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CLIC5, RGS5, SEMA3G, FLT1, INHBB, APOLD1, HES5, CD36, BTNL9, MSX1, SLC14A1, RBP7, SOX18, PODXL, HIGD1B, PLVAP, SOX7, STC1, KDR, THSD7A, STEAP4, PTPRB, GJA5, CDH5, SOX17, GPRC5B, EXOC3L2, CD320, S1PR1, EDN1]
+
+
+Blood Endothelial Cell:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CA4, PLVAP, FCN3, SLC14A1, TMEM88, PASK, PRND, BTNL9, RBP7, PODXL, CD320, SSUH2, NOTCH4, RGCC, RAMP2, GJA5, KDR, SEMA3G, TM4SF18, GIMAP7, AQP1, FLT1, ICAM2, SOX17, ESAM, SRGN, CD36, EGFL7, RNASE1, CDA]
+
+
+Fibroblast:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [RBP4, VSTM2A, CCL13, CP, SCT, ADAMDEC1, CCL8, CFD, CXCL14, ADH1B, HAPLN1, APOE, ABCA8, SCARA5, PAPPA2, TIFAB, ENHO, NSG1, CBLN2, KLRC2, BMP4, IGF1, MFAP4, ACP5, DMKN, TCF21, FABP4, NPPC, STMN2, HSD17B2]
+
+Glial Cell:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [NRXN1, GFRA3, CDH19, S100B, GPR17, PLP1, MYOT, COL28A1, FGFBP2, TTR, PCSK2, XKR4, MAL, MPZ, S100A1, MIA, TUBB2B, COL9A3, WISP2, GPM6B, NTM, DLX2, SCN7A, TAC1, RIPK4, CRYAB, PCDH9, AZGP1, LGI4, SOX8]
+
+Inflammatory Fibroblast:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [DNER, IL19, NOTUM, PTPRN, CXCL5, WNT2, IL11, CXCL13, CA12, PI15, FMO1, CHI3L2, CHI3L1, TNFRSF11B, GNLY, EREG, THBS2, SLC16A10, PTHLH, MMP10, SFRP2, TREM1, CD300E, MMP3, GAS1, TWIST1, ADAM12, FAP, INHBA, HAS1]
+  
+Myofibroblast:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [SOSTDC1, HSD17B6, HHIP, ACTG2, MFAP5, DES, MYRFL, MYH11, GRIP1, ACTA2, MYOCD, TAGLN, CES1, GREM2, CNN1, MYLK, CKB, LMOD1, PDLIM3, DIO2, TPM1, MYL9, CDCA7, SYNPO2, TPM2, PTGES3L, HUNK, PLN, WFDC1, TTLL7]
+
+Pericyte:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [RGS5, HIGD1B, KCNJ8, STEAP4, COX4I2, LPL, NOTCH3, ANO1, ANGPT2, MNDA, NDUFA4L2, CD163L1, EDNRA, CCDC141, OR51E1, GJA4, SMOC2, SLC7A2, RTN4RL2, PDGFRB, HOPX, CD36, ASPN, ADCY3, RGS16, CCDC102B, LIN7A, NR2F2, HES5, SYNPO2]
+
+Post-capillary venules:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [RAB3C, MMRN1, SELP, MADCAM1, TLL1, CCL23, CCL14, KLK10, PLA1A, SELE, ITGAM, LINC01013, ZNF385D, CLEC7A, CLDN5, LAMP3, IL33, MEOX1, CSF2, LRG1, CYP1B1, SYT15, STAB1, VWF, LTF, ANO9, C2CD4B, MEOX2, APLNR, RAMP3]
+
+Proliferating Stromal Cell:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [HIST1H1B, ASPM, DLGAP5, CEP55, MKI67, PBK, DEPDC1, HMMR, NEK2, ANLN, TOP2A, AURKB, CENPA, TPX2, FAM111B, UBE2C, BIRC5, CCNB2, RRM2, CENPF, GTSE1, NUSAP1, KIF11, CDC20, MYBL2, NUF2, BRIP1, KIF14, TYMS, CCNA2]
+
+Smooth Muscle Cell:
+  parent_type: Stroma
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [NTRK2, SLC38A11, MYOM1, PLN, MAP3K7CL, TNNC1, MYH11, C2orf40, ARTN, OR51E1, PTGES3L, XK, SORL1, SLC7A2, TAGLN, CACNA1A, ACTA2, AMIGO2, NOTCH3, HOPX, ADIRF, MCAM, DES, RRAD, KCNMA1, ANO1, SNCG, LAMA3, CSRP2, GPRC5C]
+
+## Epithelium
+
+Enterocyte:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [APOA1, GUCA2A, GUCA2B, AQP8, CA4, TMIGD1, ABCG2, CLCA4, LGI4, C11orf86, PPP1R14A, SSUH2, BEST4, CEACAM7, APOBEC3A, SLCO2A1, SLC26A3, FXYD1, CDA, LYPD8, PRAP1, CEACAM1, EMP1, IFIT1, MYOM1, RSAD2, TRIM31, MS4A12, HRASLS2, SLC51B]
+
+Enteroendocrine Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [PTPRN, CBLN2, SCG3, RGS4, FEV, SCG2, CALY, CHGA, SCGN, INSM1, CACNA2D1, TPH1, RAB3C, SLC38A11, PAPPA2, CHGB, RTN1, CES1, TTR, PCSK1N, EGR4, C2orf40, SYT1, NEUROD1, BAALC, PCSK2, OR51E1, GFRA3, DNER, GCG]
+
+Epithelial M Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [NCCRP1, SOX8, CCL23, SYNPO2, ITGAM, COL11A2, TNFAIP2, CSRP2, SCARA5, TLL1, ENPP6, CFP, CAV1, SNCG, PLAU, ICAM2, IL1B, MIA, NTRK2, LTB, LIX1L, CX3CL1, SLC2A6, TMEM158, TNF, CTSE, MSLN, GABRP, CSTA, FAM107A]
+
+Epithelial Progenitor Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [PBK, CDK1, CCNA2, ACSM2A, CDC20, NUSAP1, NUF2, CCNB1, NDC80]
+
+
+Epithelial Stem Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [SMOC2, LGR5, INHBB, CABYR, STC1, MYOT, ASCL2, WWTR1, CCDC80, SLITRK6, FAM13C, FOXQ1, MAFB, ADAMTS1, RGMB, NPPC, CERS4, CD5, REG3A, NRXN2, CLDN2, IGHG2, SERPING1, CTHRC1, FN1, IGHG3, COL18A1, IGLL1, IGHG1, ID4]
+
+Goblet Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [FRZB, CHRNA3, ITLN1, RETNLB, CLCA1, SPINK4, BEST2, TFF3, REP15, TPSG1, COLEC11, KCNMA1, RAP1GAP, MUC2, KLK12, LINC00261, KLK1, TRPA1, FCGBP, MUC5AC, SERPINA1, ZG16, CCL26, FFAR4, SPDEF, DNAJC12, ANO1, CBFA2T3, ITLN2, DES]
+
+Tuft Cell:
+  parent_type: Epithelium
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [BMX, SH2D6, LRMP, HCK, HPGDS, RGS13, TAS1R3, DKK3, CMYA5, PSTPIP2, PIK3R5, PLCG2, AZGP1, NDUFA4L2, MCTP1, KIT, GAS7, TNS1, FCGR2A, PALMD, COL9A3, RAB37, RUNX2, TUBA1A, IFI6, TPM2, STC1, SDC2, NTM, SIRPA]
+
+## B cell
+
+GC-like B cell:
+  parent_type: B_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [DNER, RGS13, AICDA, CDK1, CCNB2, CDCA7, AURKB, CYP39A1, CCNA2, TOP2A, TPX2, PBK, UBE2C, NEK2, CEP55, PLK1, TUBB2B, NUF2, CDC20, CDCA3, IGSF10, DLGAP5, LMO2, NUSAP1, CENPF, KIF23, TK1, BIRC5, CDT1, GTSE1]
+
+Memory B cell:
+  parent_type: B_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [MNDA, ITGAM, HLA-DRA, JAM3, FCRL4, ALPL, ITGAX, CXCR4, CD74, IL2RA, BTNL9, TFEC, GPR183, LTB, HLA-DPB1, CD1C, CD52, HMOX1, CCR7, PRDM8, RAB20, CALHM2, CCDC78, CD83, HLA-DRB1, MS4A1, HLA-DPA1, SCML4, CCL22, BCL2A1]
+
+Naive B cell:
+  parent_type: B_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [IGHD, SLC38A11, PCDH9, TCL1A, MMRN1, HLA-DRA, ABCB4, CABYR, S1PR1, LAIR1, CD74, CD52, HLA-DPB1, CXCR4, HLA-DRB1, PI16, LINC01013, HLA-DPA1, HLA-DQB1, PLAC8, ESAM, LAPTM5, MTSS1, CHI3L2, AFF3, LDOC1, HLA-DQA1, PNPLA7, MS4A1, AGBL2]
+
+Plasma Cell:
+  parent_type: B_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [SOHLH2, HAS1, IGHA1, IGHA2, RASD1, GJB2, CTSW, IGLV3-27, IGLL1, PCSK1N, RRAD, IGKV1D-17]
+
+Plasmablast:
+  parent_type: B_cell
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit 
+  genes: [IGHG3, IGHG1, IGHG2, PRDM1, HPGD, HRASLS2, DNAAF1, LIN7A, PMCH, CCL25, RRM2, AC084809.2, GZMB]
+
+## Myeloid
+
+Neutrophils:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 2.295
+  model: explicit
+  genes: [ADGRE1, B2M, BTK, C5AR1, CCR3, CD14, CD163, CSF3R, CTSS, CX3CR1, CXCR1, CXCR2, CYBB, EGR3, FCGR2A, FCGR3B, FFAR2, FPR1, 
+          FPR2, GLT1D1, GPBAR1, HRH2, IFITM2, IL27, KCNJ15, MNDA, NFKBIZ, NLRP12, NOP10, PIM1, PRRG3, PRSS33, PTPN6, RASGRP4, RNASE2, S100A8, 
+          S100A9, SH3BGRL, SIGLEC5, TNFAIP6, TNFAIP8L2, TNFRSF10C, TREM1, TULP2, VNN2, VNN3, WAS]
+
+CD83+ CLEC9A+ DC:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CLEC9A, COL4A4, VCAM1, CYYR1, SH3BP4, IDO1, RGCC, DUSP4, RND1, SERPINF2, WNT5A, BEND5, CPVL, EHF, C1orf54, TNF, EGR4, KIF16B, MYLK, LDLRAD2, PNMA1, HLA-DPA1, HLA-DPB1, HLA-DQB1, NAV1, INPP5F, CD74, EBF4, DUSP2, BASP1]
+
+CD83- CLEC9A+ DC:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CLEC9A, IDO1, SERPINF2, S100B, LGALS2, BEND5, CCDC122, WASF3, CYYR1, C1orf54, RGCC, EHF, CDCA7, FAM3B, CPVL, PNMA1, CCNB1, UBE2C, CKB, AURKB, PPP1R14A, HLA-DPB1, ACTG1, CDCA3, POLA2, DNASE1L3, EEF1B2, BASP1, C5orf63, TIFAB]
+
+CD209+ moDC:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [CYP26B1, GPNMB, C1QA, A2M, IGF1, CD209, HRH1, CCL26, CH25H, CXCL12, C1QB, CD163L1, LPIN3, GPRC5B, SLC40A1, CCL3, MMP10, CCL18, LILRB5, LGMN, RND3, ME1, SDS, APOC1, RNASE1, CCL13, STAB1, EPHB2, NRP1, KCNMA1]
+
+# CLEC10A+ DC:
+#   parent_type: Myeloid
+#   cell_proportion: 0.02127659574
+#   rna_per_cell: 1.0
+#   model: explicit
+#   genes: [CD1C, ENHO, CD1E, CLEC10A, FCER1A, AFF3, PLD4, PKIB, HLA-DPB1, GRIP1, CDH17, FBLN2, ABCB4, HLA-DRA, PPP1R14A, CD74, CD2, HLA-DQB1, HLA-DPA1]
+
+IL7R+ Activated DC:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [NCCRP1, CCL22, TUBB2B, CCL19, CCL17, LAMP3, CCR7, INSM1, FSCN1, NRXN2, TNFRSF11B, AOC1, ANXA3, SYNPO, PLEKHG1, CXCL11, TFPI2, SNCG, EBF4, SYNPO2, MIR155HG, IDO1, TRIP10, IL7R, RHOV, CALCRL, ACVR1C, CXCL9, DSG2, HOPX]
+
+Mast Cell:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [IL5, TPSAB1, KRT1, CTSG, CMA1, IL1RL1, CPA3, HDC, ADCYAP1, IL13, GATA2, SLC18A2, CADPS, HPGDS, TRABD2B, KIT, IL5RA, HPGD, SCN7A, TPSG1, GFRA3, CACNA2D1, CLU, NTM, RGS13, SLC38A11, PPP1R26-AS1, CSF2, CCDC141, SOX13]
+
+Monocyte Inflammatory:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [S100A8, S100A12, LIN7A, VCAN, S100A9, CDA, FCN1, RBP7, SLC11A1, APOBEC3A, FGFBP2, CD300E, CSF3, MGST1, SERPINA1, CES1, STEAP4, CITED4, TNFAIP6, CSTA, PLCB1, TNIP3, TREM1, CRISPLD2, HIST2H2AA3, OSCAR, CYP1B1, S100A4, MEGF9, S100A6]
+
+Proliferating myeloid:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [TOP2A, MKI67, TYMS, DLGAP5, ANLN, CDK1, GTSE1, BIRC5, UBE2C, HMMR, CENPA, DEPDC1, CDC20, RRM2, TK1, CEP55, CDCA3, ASPM, FAM111B, CCNB2, TPX2, CENPM, NDC80, AURKB, PLK1, HIST1H1B, CCNA2, NEK2, CENPF, KIF11]
+
+Resident Macrophage:
+  parent_type: Myeloid
+  cell_proportion: 0.02127659574
+  rna_per_cell: 1.0
+  model: explicit
+  genes: [JAM3, ESAM, C2orf88, PLA2G2D, ACRBP, SELP, MYCT1, GNG11, C1QC, MMP12, CLDN5, PTGDS, PDZK1IP1, C1QB, C1QA, RAB42, RBP1, MMP9, APOE, MAP3K7CL, FOLR2, FUCA1, ADAMDEC1, MMP1, RNASE1, nan]
+

@@ -45,7 +45,10 @@ class CellTypes:
         for cell_type in self:
             if cell_type.parent_type:
                 self._types_tree.add_edge(cell_type.parent_type, cell_type.name)
-
+        
+        print(self._types_tree)
+        nx.draw_networkx(self._types_tree)
+        plt.show()
         if not nx.is_tree(self.types_tree):
             raise Exception("The resulting graph has to be a tree")
     
