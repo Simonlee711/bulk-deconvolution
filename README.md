@@ -1,4 +1,4 @@
-# Cell Deconvolution Benchmarking
+# Bulk Deconvolution Benchmarking
 
 ![alt text](https://github.com/Simonleectx/cell-deconvolution/blob/main/figures/rmse_method.png)
 
